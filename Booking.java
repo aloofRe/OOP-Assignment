@@ -3,7 +3,7 @@ import java.time.LocalDate;
 
 public class Booking {
     private String bookingId;
-    private Customer customer;
+    private User customer;
     private Vehicle vehicle;
     private LocalDate pickupDate;
     private LocalDate dropoffDate;
@@ -19,7 +19,7 @@ public class Booking {
     private boolean isComplete;
     
 
-    public Booking(String bookingId, Customer customer, Vehicle vehicle, LocalDate pickupDate, LocalDate dropoffDate) {
+    public Booking(String bookingId, User customer, Vehicle vehicle, LocalDate pickupDate, LocalDate dropoffDate) {
         this.bookingId = bookingId;
         this.customer = customer;
         this.vehicle = vehicle;
@@ -27,12 +27,30 @@ public class Booking {
         this.dropoffDate = dropoffDate;
     }
 
+    public Booking(String bookingId, User customer, Vehicle vehicle, LocalDate pickupDate, LocalDate dropoffDate, LocalDate returnedDate, double fuelFee, double lateFee, double damageFee, double baseTotal, double extraTotal, double finalTotal, boolean isPickedup, boolean isDroppedoff, boolean isComplete) {
+        this.bookingId = bookingId;
+        this.customer = customer;
+        this.vehicle = vehicle;
+        this.pickupDate = pickupDate;
+        this.dropoffDate = dropoffDate;
+        this.returnedDate = returnedDate;
+        this.fuelFee = fuelFee;
+        this.lateFee = lateFee;
+        this.damageFee = damageFee;
+        this.baseTotal = baseTotal;
+        this.extraTotal = extraTotal;
+        this.finalTotal = finalTotal;
+        this.isPickedup = isPickedup;
+        this.isDroppedoff = isDroppedoff;
+        this.isComplete = isComplete;
+    }
+
 
     public String getBookingId() {
         return bookingId;
     }
 
-    public Customer getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
@@ -93,7 +111,7 @@ public class Booking {
         this.bookingId = bookingId;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(User customer) {
         this.customer = customer;
     }
 
