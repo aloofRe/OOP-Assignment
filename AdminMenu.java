@@ -7,6 +7,7 @@ public class AdminMenu extends Menu {
     }
 
 
+    @Override
     public void start() {
     }
 

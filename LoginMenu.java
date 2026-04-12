@@ -7,6 +7,7 @@ public class LoginMenu extends Menu {
     }
 
 
+    @Override
     public void start(){
     }
 
