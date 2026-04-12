@@ -147,11 +147,7 @@ public abstract class Vehicle {
         rentalCount++;
     }
     
-    public String toString() {
-        return "";
-    }
+    public abstract String toString();
 
-    public String toCSV() {
-        return "";
-    }
+    public abstract String toCSV();
 }

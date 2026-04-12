@@ -35,10 +35,13 @@ public class Luxury extends Vehicle {
         return 0.0;
     }
 
+
+    @Override
     public String toString() {
         return "";
     }
 
+    @Override
     public String toCSV() {
         return "";
     }

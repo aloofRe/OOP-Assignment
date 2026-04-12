@@ -45,11 +45,7 @@ public abstract class User {
     	return false;
 	}
 	
-    public String toString() {
-        return "";
-    }
+    public abstract String toString();
 
-    public String toCSV() {
-        return "";
-    }
+    public abstract String toCSV();
 }
