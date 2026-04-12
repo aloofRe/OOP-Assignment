@@ -7,6 +7,7 @@ import java.io.IOException;
 
 
 public class DataManager {
+    private final String SYSTEM_FILE = "data/system.txt";
     private final String USER_FILE = "data/users.txt";
     private final String VEHICLE_FILE = "data/vehicles.txt";
     private final String BOOKING_FILE = "data/bookings.txt";
@@ -21,6 +22,14 @@ public class DataManager {
 
     //Reads each line in each file, then parses them into their respective objects and stores in RentalData
     public void loadData() {
+        try(Scanner lineReader = new Scanner(new File(SYSTEM_FILE))) {
+            if(lineReader.hasNextLine()) {
+                rentalData.setSystemDate(LocalDate.parse(lineReader.nextLine()));
+            }
+        } catch(FileNotFoundException e) {
+            System.out.println("An Error Occurred! File Not Found : " + SYSTEM_FILE);
+        }
+
         try(Scanner lineReader = new Scanner(new File(USER_FILE))) {
             while(lineReader.hasNextLine()) {
                 String line = lineReader.nextLine();
@@ -76,6 +85,12 @@ public class DataManager {
 
     //Gets all objects in RentalData and overwrites all files with their new CSV data
     public void saveData() {
+        try(PrintWriter writer = new PrintWriter(new File(SYSTEM_FILE))) {
+            writer.println(rentalData.getSystemDate().toString());
+        } catch(IOException e) {
+            System.out.println("An Error Occurred! Could Not Save To : " + SYSTEM_FILE);
+        }
+
         try(PrintWriter writer = new PrintWriter(new File(USER_FILE))) {
             for(User user : rentalData.getAllUsers()) {
                 writer.println(user.toCSV());
