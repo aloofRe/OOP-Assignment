@@ -76,9 +76,9 @@ public class RentalData {
 
     public Vehicle getVehicleByPlate(String plateNo) {
         for(Vehicle vehicle : vehiclesList) {
-            //if(vehicle.getPlateNo().equals(plateNo)) {
-                //return vehicle;
-            //}
+            if(vehicle.getPlateNo().equals(plateNo)) {
+                return vehicle;
+            }
         }
 
         return null;

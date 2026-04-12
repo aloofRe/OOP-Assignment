@@ -15,7 +15,8 @@ public class Invoice {
     private double finalTotal;
     
 
-    public Invoice(String invoiceId, String bookingId, String customerName, String plateNo, LocalDate invoiceDate, double fuelFee, double lateFee, double damageFee, double baseTotal, double extraTotal, double finalTotal) {
+    public Invoice(String invoiceId, String bookingId, String customerName, String plateNo, LocalDate invoiceDate,
+         double fuelFee, double lateFee, double damageFee, double baseTotal, double extraTotal, double finalTotal) {
         this.invoiceId = invoiceId;
         this.bookingId = bookingId;
         this.customerName = customerName;

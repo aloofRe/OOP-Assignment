@@ -18,9 +18,9 @@ public class MainManager {
         this.dataManager = new DataManager(rentalData);
         this.scanner = new Scanner(System.in);
         this.menuManager = new MenuManager(this, scanner);
-        //this.loginManager = new LoginManager(this);
+        this.loginManager = new LoginManager(this);
         this.bookingManager = new BookingManager(this);
-        //this.vehicleManager = new VehicleManager(this);
+        this.vehicleManager = new VehicleManager(this);
     }
 
 

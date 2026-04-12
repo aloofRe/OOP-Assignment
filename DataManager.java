@@ -101,7 +101,7 @@ public class DataManager {
 
         try(PrintWriter writer = new PrintWriter(new File(VEHICLE_FILE))) {
             for(Vehicle vehicle : rentalData.getAllVehicles()) {
-                // writer.println(vehicle.toCSV());
+                writer.println(vehicle.toCSV());
             }
         } catch(IOException e) {
             System.out.println("An Error Occurred! Could Not Save To : " + VEHICLE_FILE);
@@ -181,20 +181,20 @@ public class DataManager {
         if(vehicleType.equals("Economy")) {
             double fuelDiscount = Double.parseDouble(vehicleInfo[14]);
 
-            return null; //new Economy(plateNo, brand, model, transmission, engineCap, seatingCap, mileage, curFuelLevel, maxFuelLevel, dailyRate, isAvailable, isDamaged, rentalCount, fuelDiscount);
+            return new Economy(plateNo, brand, model, transmission, engineCap, seatingCap, mileage, curFuelLevel, maxFuelLevel, dailyRate, isAvailable, isDamaged, rentalCount, fuelDiscount);
         }
 
         else if(vehicleType.equals("Suv")) {
             double serviceFee = Double.parseDouble(vehicleInfo[14]);
 
-            return null; //new Suv(plateNo, brand, model, transmission, engineCap, seatingCap, mileage, curFuelLevel, maxFuelLevel, dailyRate, isAvailable, isDamaged, rentalCount, serviceFee);
+            return new Suv(plateNo, brand, model, transmission, engineCap, seatingCap, mileage, curFuelLevel, maxFuelLevel, dailyRate, isAvailable, isDamaged, rentalCount, serviceFee);
         }
         
         else if(vehicleType.equals("Luxury")) {
             double serviceFee = Double.parseDouble(vehicleInfo[14]);
             double insuranceRate = Double.parseDouble(vehicleInfo[15]);
 
-            return null; //new Luxury(plateNo, brand, model, transmission, engineCap, seatingCap, mileage, curFuelLevel, maxFuelLevel, dailyRate, isAvailable, isDamaged, rentalCount, serviceFee, insuranceRate);
+            return new Luxury(plateNo, brand, model, transmission, engineCap, seatingCap, mileage, curFuelLevel, maxFuelLevel, dailyRate, isAvailable, isDamaged, rentalCount, serviceFee, insuranceRate);
         }
 
         return null;
@@ -224,7 +224,8 @@ public class DataManager {
         boolean isDroppedoff = Boolean.parseBoolean(bookingInfo[13]);
         boolean isComplete = Boolean.parseBoolean(bookingInfo[14]);
 
-        return new Booking(bookingId, customer, vehicle, pickupDate, dropoffDate, returnedDate, fuelFee, lateFee, damageFee, baseTotal, extraTotal, finalTotal, isPickedup, isDroppedoff, isComplete);
+        return new Booking(bookingId, customer, vehicle, pickupDate, dropoffDate, returnedDate, fuelFee, lateFee,
+             damageFee, baseTotal, extraTotal, finalTotal, isPickedup, isDroppedoff, isComplete);
     }
 
     //Splits Invoice CSVs into individual invoices
@@ -247,6 +248,7 @@ public class DataManager {
         double extraTotal = Double.parseDouble(invoiceInfo[9]);
         double finalTotal = Double.parseDouble(invoiceInfo[10]);
 
-        return new Invoice(invoiceId, bookingId, customerName, plateNo, invoiceDate, fuelFee, lateFee, damageFee, baseTotal, extraTotal, finalTotal);
+        return new Invoice(invoiceId, bookingId, customerName, plateNo, invoiceDate, fuelFee, lateFee,
+             damageFee, baseTotal, extraTotal, finalTotal);
     }
 }

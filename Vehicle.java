@@ -14,7 +14,9 @@ public abstract class Vehicle {
     private int rentalCount;
     
 
-    public Vehicle(String plateNo, String brand, String model, String transmission, int engineCap, int seatingCap, double mileage, double curFuelLevel, double maxFuelLevel, double dailyRate, boolean isAvailable, boolean isDamaged, int rentalCount) {
+    public Vehicle(String plateNo, String brand, String model, String transmission, int engineCap, int seatingCap,
+         double mileage, double curFuelLevel, double maxFuelLevel, double dailyRate, boolean isAvailable,
+         boolean isDamaged, int rentalCount) {
         this.plateNo = plateNo;
         this.brand = brand;
         this.model = model;

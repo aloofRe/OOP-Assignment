@@ -27,7 +27,9 @@ public class Booking {
         this.dropoffDate = dropoffDate;
     }
 
-    public Booking(String bookingId, User customer, Vehicle vehicle, LocalDate pickupDate, LocalDate dropoffDate, LocalDate returnedDate, double fuelFee, double lateFee, double damageFee, double baseTotal, double extraTotal, double finalTotal, boolean isPickedup, boolean isDroppedoff, boolean isComplete) {
+    public Booking(String bookingId, User customer, Vehicle vehicle, LocalDate pickupDate, LocalDate dropoffDate,
+         LocalDate returnedDate, double fuelFee, double lateFee, double damageFee, double baseTotal,
+         double extraTotal, double finalTotal, boolean isPickedup, boolean isDroppedoff, boolean isComplete) {
         this.bookingId = bookingId;
         this.customer = customer;
         this.vehicle = vehicle;
