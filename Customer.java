@@ -3,6 +3,12 @@ public class Customer extends User {
     private String contactNo;
 
 
+    public Customer(String userId, String name, String password) {
+        super(userId, name, password);
+        this.licenseNo = "";
+        this.contactNo = "";
+    }
+
     public Customer(String userId, String name, String password, String licenseNo, String contactNo) {
         super(userId, name, password);
         this.licenseNo = licenseNo;

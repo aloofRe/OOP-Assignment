@@ -13,7 +13,9 @@ public class MenuManager {
 
 
     public void showLogin() {
-        
+        LoginMenu loginMenu = new LoginMenu(mainManager, scanner);
+
+        loginMenu.start();
     }
     
     public void showUserMenus() {
