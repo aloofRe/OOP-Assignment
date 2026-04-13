@@ -32,17 +32,14 @@ public class Luxury extends Vehicle {
 
     
     public double calculateBasePrice(long duration) {
-        return 0.0;
-    }
-
-
-    @Override
-    public String toString() {
-        return "";
+        return (duration * getDailyRate() + duration * insuranceRate + serviceFee);
     }
 
     @Override
     public String toCSV() {
-        return "";
+        return ("Luxury," + getPlateNo() + "," + getBrand() + "," + getModel() + "," + getTransmission() + ","
+             + getEngineCap() + "," + getSeatingCap() + "," + getMileage() + "," + getCurFuelLevel() + ","
+             + getMaxFuelLevel() + "," + getDailyRate() + "," + getIsAvailable() + "," + getIsDamaged() + ","
+             + getRentalCount() + "," + getServiceFee() + "," + getInsuranceRate());
     }
 }

@@ -19,23 +19,17 @@ public class Economy extends Vehicle {
     public void setFuelDiscount(double fuelDiscount) {
         this.fuelDiscount = fuelDiscount;
     }
-
-
-    public double calculateBasePrice(long duration) {
-        return 0.0;
-    }
+    
 
     public double calculateFuelFees(double fuelPrice) {
-        return 0.0;
-    }
-
-    @Override
-    public String toString() {
-        return "";
+        return ((getMaxFuelLevel() - getCurFuelLevel()) * fuelPrice * (1 - fuelDiscount));
     }
 
     @Override
     public String toCSV() {
-        return "";
+        return ("Economy," + getPlateNo() + "," + getBrand() + "," + getModel() + "," + getTransmission() + ","
+             + getEngineCap() + "," + getSeatingCap() + "," + getMileage() + "," + getCurFuelLevel() + ","
+             + getMaxFuelLevel() + "," + getDailyRate() + "," + getIsAvailable() + "," + getIsDamaged() + ","
+             + getRentalCount() + "," + getFuelDiscount());
     }
 }

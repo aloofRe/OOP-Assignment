@@ -19,6 +19,18 @@ public class MenuManager {
     }
     
     public void showUserMenus() {
+        User sessionUser = mainManager.getSessionUser();
         
+        if(sessionUser instanceof Customer) {
+            new CustomerMenu(mainManager, scanner).start();
+        }
+
+        else if(sessionUser instanceof Staff) {
+            new StaffMenu(mainManager, scanner).start();
+        }
+
+        else if(sessionUser instanceof Admin) {
+            new AdminMenu(mainManager, scanner).start();
+        }
     }
 }

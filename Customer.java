@@ -35,12 +35,8 @@ public class Customer extends User {
 
 
     @Override
-    public String toString() {
-        return "";
-    }
-
-    @Override
     public String toCSV() {
-        return "";
+        return ("Customer," + getUserId() + "," + getName() + "," + getPassword() + ","
+             + getLicenseNo() + "," + getContactNo());
     }
 }

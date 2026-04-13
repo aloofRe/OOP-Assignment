@@ -10,7 +10,7 @@ public class LoginManager {
     public User authenticateUser(String userId, String password) {
         User user = mainManager.getRentalData().getUserById(userId);
         
-        if(user != null && user.getPassword().equals(password)) {
+        if(user != null && user.verify(password)) {
             return user;
         } else {
             return null;

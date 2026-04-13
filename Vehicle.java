@@ -136,18 +136,21 @@ public abstract class Vehicle {
     
     
     public double calculateBasePrice(long duration) {
-       return 0.0;
+        return (duration * dailyRate);
     }
     
     public double calculateFuelFees(double fuelPrice){
-        return 0.0;
+        return ((maxFuelLevel - curFuelLevel) * fuelPrice);
     }
 
     public void incRentalCount() {
         rentalCount++;
     }
     
-    public abstract String toString();
+    public String toString() {
+        return String.format("%-10s | %-12s %-12s | %-10s | %d Seats | RM%6.2f/day", getPlateNo(), getBrand(),
+             getModel(), getTransmission(), getSeatingCap(), getDailyRate());
+    }
 
     public abstract String toCSV();
 }

@@ -5,12 +5,7 @@ public class Admin extends User {
 
 
     @Override
-    public String toString(){
-        return "";
-    }
-
-    @Override
     public String toCSV(){
-        return "";
+        return ("Admin," + getUserId() + "," + getName() + "," + getPassword());
     }
 }

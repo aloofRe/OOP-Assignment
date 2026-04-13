@@ -38,14 +38,8 @@ public abstract class User {
 
 
 	public boolean verify(String password) {
-    	return false;
+    	return this.password.equals(password);
 	}
-	
-	public boolean equals(Object user) {
-    	return false;
-	}
-	
-    public abstract String toString();
 
     public abstract String toCSV();
 }

@@ -22,16 +22,14 @@ public class Suv extends Vehicle {
 
     
     public double calculateBasePrice(long duration) {
-        return 0.0;
-    }
-
-    @Override
-    public String toString() {
-        return "";
+        return (duration * getDailyRate() + serviceFee);
     }
 
     @Override
     public String toCSV() {
-        return "";
+        return ("Suv," + getPlateNo() + "," + getBrand() + "," + getModel() + "," + getTransmission() + ","
+             + getEngineCap() + "," + getSeatingCap() + "," + getMileage() + "," + getCurFuelLevel() + ","
+             + getMaxFuelLevel() + "," + getDailyRate() + "," + getIsAvailable() + "," + getIsDamaged() + ","
+             + getRentalCount() + "," + getServiceFee());
     }
 }
