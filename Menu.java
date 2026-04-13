@@ -12,4 +12,14 @@ public abstract class Menu {
     }
 
     public abstract void start();
+
+    public void notify(String message) {
+        System.out.println(message + "\nPress Enter To Continue...");
+        scanner.nextLine();
+    }
+
+    public void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 }

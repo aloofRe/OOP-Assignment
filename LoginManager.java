@@ -12,9 +12,9 @@ public class LoginManager {
         
         if(user != null && user.getPassword().equals(password)) {
             return user;
+        } else {
+            return null;
         }
-
-        return null;
     }
 
     public boolean registerNewUser(User user) {

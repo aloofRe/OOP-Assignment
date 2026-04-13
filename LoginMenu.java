@@ -9,6 +9,7 @@ public class LoginMenu extends Menu {
 
     @Override
     public void start() {
+        //TODO:
         //display system logo and maybe title
         //display options
         //Please select an option? login/register/quit
@@ -31,18 +32,25 @@ public class LoginMenu extends Menu {
     }
 
     public void loginUser() {
+        clearScreen();
         User user = null;
 
         while(user == null) {
+            //TODO:
             //display ask for id eg "C0001"
             String userId = scanner.nextLine();
 
+            //TODO:
             //display ask for password
             String password = scanner.nextLine();
 
             user = mainManager.getLoginManager().authenticateUser(userId, password);
 
             if(user == null) {
+                clearScreen();
+                notify("Login Failed. Please Check Your (User ID) Or (Password)");
+
+                //TODO:
                 //display want to retry? 1 yes 2 no
                 int choice = scanner.nextInt();
                 scanner.nextLine();
@@ -59,28 +67,40 @@ public class LoginMenu extends Menu {
         }
 
         if(user != null) {
+            clearScreen();
+            notify("Login Successful! Welcome, " + user.getName() + "!");
+
             mainManager.setSessionUser(user);
             return;
         }
     }
 
     public void registerUser() {
+        clearScreen();
         boolean registered = false;
+        User newUser = null;
 
         while(!registered) {
             int userListSize = mainManager.getRentalData().getAllUsers().size();
             String nextUserId = "C" + ((userListSize > 0) ? String.format("%04d", Integer.parseInt(mainManager.getRentalData()
                 .getAllUsers().get(userListSize - 1).getUserId().substring(1)) + 1) : "0001");
             
+            //TODO:
             //display ask for name
             String name = scanner.nextLine();
 
+            //TODO:
             //display ask for password
             String password = scanner.nextLine();
 
-            registered = mainManager.getLoginManager().registerNewUser(new Customer(nextUserId, name, password));
+            newUser = new Customer(nextUserId, name, password);
+            registered = mainManager.getLoginManager().registerNewUser(newUser);
 
             if(!registered) {
+                clearScreen();
+                notify("Register Failed. Please Check Your (Name) Or (Password)");
+
+                //TODO:
                 //display want to retry? 1 yes 2 no
                 int choice = scanner.nextInt();
                 scanner.nextLine();
@@ -97,6 +117,8 @@ public class LoginMenu extends Menu {
         }
 
         if(registered) {
+            clearScreen();
+            notify("Register Successful! Your User ID Is : " + newUser.getUserId());
             return;
         }
     }
