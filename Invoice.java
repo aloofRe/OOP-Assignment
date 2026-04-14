@@ -123,11 +123,12 @@ public class Invoice {
 
     @Override
     public String toString() {
-        return "";
+        return String.format("%-10s | %-10s | %-20s | %-10s | %-12s | RM%6.2f", invoiceId, bookingId,
+             customerName, plateNo, invoiceDate, finalTotal);
     }
 
-
     public String toCSV() {
-        return "";
+        return (invoiceId + "," + bookingId + "," + customerName + "," + plateNo + "," + invoiceDate + ","
+             + fuelFee + "," + lateFee + "," + damageFee + "," + baseTotal + "," + extraTotal + "," + finalTotal);
     }
 }

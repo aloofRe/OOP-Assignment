@@ -172,10 +172,14 @@ public class Booking {
     
     @Override
     public String toString() {
-        return "";
+        return String.format("%-10s | %-10s | %-10s | %-12s | %-12s | %-12s", bookingId, customer.getUserId(),
+             vehicle.getPlateNo(), pickupDate, dropoffDate, returnedDate);
     }
 
     public String toCSV() {
-        return "";
+        return (bookingId + "," + customer.getUserId() + "," + vehicle.getPlateNo() + "," + pickupDate + ","
+             + dropoffDate + "," + returnedDate + "," + fuelFee + "," + lateFee + "," + damageFee + ","
+             + baseTotal + "," + extraTotal + "," + finalTotal + "," + isPickedup + "," + isDroppedoff + ","
+             + isComplete);
     }      
 }
