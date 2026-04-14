@@ -75,7 +75,7 @@ public class RentalData {
 
     public User getUserById(String userId) {
         for(User user : usersList) {
-            if(user.getUserId().equals(userId)) {
+            if(user.getUserId().equalsIgnoreCase(userId)) {
                 return user;
             }
         }
@@ -85,7 +85,7 @@ public class RentalData {
 
     public Vehicle getVehicleByPlate(String plateNo) {
         for(Vehicle vehicle : vehiclesList) {
-            if(vehicle.getPlateNo().equals(plateNo)) {
+            if(vehicle.getPlateNo().equalsIgnoreCase(plateNo)) {
                 return vehicle;
             }
         }
@@ -95,7 +95,7 @@ public class RentalData {
 
     public Booking getBookingById(String bookingId) {
         for(Booking booking : bookingsList) {
-            if(booking.getBookingId().equals(bookingId)) {
+            if(booking.getBookingId().equalsIgnoreCase(bookingId)) {
                 return booking;
             }
         }
