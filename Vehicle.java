@@ -129,6 +129,10 @@ public abstract class Vehicle {
     public void setIsAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
+
+    public void setIsDamaged(boolean isDamaged) {
+        this.isDamaged = isDamaged;
+    }
     
     public void setRentalCount(int rentalCount) {
         this.rentalCount = rentalCount;

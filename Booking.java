@@ -60,11 +60,11 @@ public class Booking {
         return vehicle;
     }
 
-    public LocalDate getPickUpDate() {
+    public LocalDate getPickupDate() {
         return pickupDate;
     }
 
-    public LocalDate getDropOffDate() {
+    public LocalDate getDropoffDate() {
         return dropoffDate;
     }
 
@@ -96,11 +96,11 @@ public class Booking {
         return finalTotal;
     }
 
-    public boolean getPickedUp() {
+    public boolean getPickedup() {
         return isPickedup;
     }
     
-    public boolean getDroppedOff() {
+    public boolean getDroppedoff() {
         return isDroppedoff;
     }
 
@@ -121,11 +121,11 @@ public class Booking {
         this.vehicle = vehicle;
     }
 
-    public void setPickUpDate(LocalDate pickupDate) {
+    public void setPickupDate(LocalDate pickupDate) {
         this.pickupDate = pickupDate;
     }
 
-    public void setDropOffDate(LocalDate dropoffDate) {
+    public void setDropoffDate(LocalDate dropoffDate) {
         this.dropoffDate = dropoffDate;
     }
 
@@ -157,11 +157,11 @@ public class Booking {
         this.finalTotal = finalTotal;
     }
 
-    public void setPickedUp(boolean isPickedup) {
+    public void setPickedup(boolean isPickedup) {
         this.isPickedup = isPickedup;
     }
 
-    public void setDroppedOff(boolean isDroppedoff) {
+    public void setDroppedoff(boolean isDroppedoff) {
         this.isDroppedoff = isDroppedoff;
     }
 

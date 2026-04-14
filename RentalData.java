@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class RentalData {
     private LocalDate systemDate;
+    private double fuelPrice;
     private ArrayList<User> usersList = new ArrayList<>();
     private ArrayList<Vehicle> vehiclesList = new ArrayList<>();
     private ArrayList<Booking> bookingsList = new ArrayList<>();
@@ -19,8 +20,16 @@ public class RentalData {
         return systemDate;
     }
 
+    public double getFuelPrice() {
+        return fuelPrice;
+    }
+
     public void setSystemDate(LocalDate systemDate) {
         this.systemDate = systemDate;
+    }
+
+    public void setFuelPrice(double fuelPrice) {
+        this.fuelPrice = fuelPrice;
     }
 
 

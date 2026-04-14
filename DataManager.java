@@ -26,6 +26,10 @@ public class DataManager {
             if(lineReader.hasNextLine()) {
                 rentalData.setSystemDate(LocalDate.parse(lineReader.nextLine()));
             }
+
+            if(lineReader.hasNextLine()) {
+                rentalData.setFuelPrice(Double.parseDouble(lineReader.nextLine()));
+            }
         } catch(FileNotFoundException e) {
             System.out.println("An Error Occurred! File Not Found : " + SYSTEM_FILE);
         }
@@ -87,6 +91,7 @@ public class DataManager {
     public void saveData() {
         try(PrintWriter writer = new PrintWriter(new File(SYSTEM_FILE))) {
             writer.println(rentalData.getSystemDate().toString());
+            writer.println(String.valueOf(rentalData.getFuelPrice()));
         } catch(IOException e) {
             System.out.println("An Error Occurred! Could Not Save To : " + SYSTEM_FILE);
         }
@@ -238,7 +243,7 @@ public class DataManager {
 
         String invoiceId = invoiceInfo[0];
         String bookingId = invoiceInfo[1];
-        String customerName = invoiceInfo[2];
+        String userId = invoiceInfo[2];
         String plateNo = invoiceInfo[3];
         LocalDate invoiceDate = invoiceInfo[4].equals("null") ? null : LocalDate.parse(invoiceInfo[4]);
         double fuelFee = Double.parseDouble(invoiceInfo[5]);
@@ -248,7 +253,7 @@ public class DataManager {
         double extraTotal = Double.parseDouble(invoiceInfo[9]);
         double finalTotal = Double.parseDouble(invoiceInfo[10]);
 
-        return new Invoice(invoiceId, bookingId, customerName, plateNo, invoiceDate, fuelFee, lateFee,
+        return new Invoice(invoiceId, bookingId, userId, plateNo, invoiceDate, fuelFee, lateFee,
              damageFee, baseTotal, extraTotal, finalTotal);
     }
 }

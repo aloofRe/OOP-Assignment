@@ -30,7 +30,10 @@ public class Luxury extends Vehicle {
         this.insuranceRate = insuranceRate;
     }
 
-    
+    public double calculateFuelFees(double fuelPrice) {
+        return ((getMaxFuelLevel() - getCurFuelLevel()) * fuelPrice * 1.4);
+    }
+
     public double calculateBasePrice(long duration) {
         return (duration * getDailyRate() + duration * insuranceRate + serviceFee);
     }

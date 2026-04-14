@@ -4,7 +4,7 @@ import java.time.LocalDate;
 public class Invoice {
     private String invoiceId;
     private String bookingId;
-    private String customerName;
+    private String userId;
     private String plateNo;
     private LocalDate invoiceDate;
     private double fuelFee;
@@ -15,11 +15,11 @@ public class Invoice {
     private double finalTotal;
     
 
-    public Invoice(String invoiceId, String bookingId, String customerName, String plateNo, LocalDate invoiceDate,
+    public Invoice(String invoiceId, String bookingId, String userId, String plateNo, LocalDate invoiceDate,
          double fuelFee, double lateFee, double damageFee, double baseTotal, double extraTotal, double finalTotal) {
         this.invoiceId = invoiceId;
         this.bookingId = bookingId;
-        this.customerName = customerName;
+        this.userId = userId;
         this.plateNo = plateNo;
         this.invoiceDate = invoiceDate;
         this.fuelFee = fuelFee;
@@ -39,8 +39,8 @@ public class Invoice {
         return bookingId;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getUserId() {
+        return userId;
     }
 
     public String getPlateNo() {
@@ -84,8 +84,8 @@ public class Invoice {
         this.bookingId = bookingId;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public void setPlateNo(String plateNo) {
@@ -123,12 +123,12 @@ public class Invoice {
 
     @Override
     public String toString() {
-        return String.format("%-10s | %-10s | %-20s | %-10s | %-12s | RM%6.2f", invoiceId, bookingId,
-             customerName, plateNo, invoiceDate, finalTotal);
+        return String.format("%-10s | %-10s | %-10s | %-10s | %-12s | RM%6.2f", invoiceId, bookingId,
+             userId, plateNo, invoiceDate, finalTotal);
     }
 
     public String toCSV() {
-        return (invoiceId + "," + bookingId + "," + customerName + "," + plateNo + "," + invoiceDate + ","
+        return (invoiceId + "," + bookingId + "," + userId + "," + plateNo + "," + invoiceDate + ","
              + fuelFee + "," + lateFee + "," + damageFee + "," + baseTotal + "," + extraTotal + "," + finalTotal);
     }
 }
