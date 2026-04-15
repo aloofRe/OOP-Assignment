@@ -58,7 +58,7 @@ public class AdminMenu extends Menu {
 
             //TODO:
             //ask whether want to edit existing vehicle or add new vehicle or return to main customer menu
-            //options 1 edit vehicle 2 add vehicle 3 return
+            //options 1 edit vehicle 2 add vehicle 3 remove vehicle 4 return
             int choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -79,6 +79,18 @@ public class AdminMenu extends Menu {
                     createVehicle();
                     break;
                 case 3:
+                    //TODO:
+                    //ask which vehicle number from the list to remove
+                    int removeVehicle = scanner.nextInt();
+                    scanner.nextLine();
+
+                    if(removeVehicle >= 1 && removeVehicle <= allVehicles.size()) {
+                        mainManager.getVehicleManager().removeVehicle(allVehicles.get(removeVehicle - 1).getPlateNo());
+                    } else {
+                        notify("Invalid Vehicle Number. Please Input A Valid Number From The List.");
+                    }
+                    break;
+                case 4:
                     return;
                 default:
                     return;

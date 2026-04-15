@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.time.LocalDate;
 
 
 public class LoginMenu extends Menu {
@@ -10,9 +11,10 @@ public class LoginMenu extends Menu {
     @Override
     public void start() {
         //TODO:
-        //display system logo and maybe title
-        //display options
-        //Please select an option? login/register/quit
+        System.out.println(".------------------------------.");
+        System.out.println("|          LOGIN MENU          |");
+        System.out.println("'------------------------------'");
+        System.out.println("\n1. Login\n2. Register\n3. Switch System Date\n4. Quit\n: ");
         int choice = scanner.nextInt();
         scanner.nextLine();
 
@@ -24,6 +26,9 @@ public class LoginMenu extends Menu {
                 registerUser();
                 break;
             case 3:
+                switchDate();
+                break;
+            case 4:
                 mainManager.shutdown();
                 break;
             default:
@@ -32,26 +37,29 @@ public class LoginMenu extends Menu {
     }
 
     public void loginUser() {
-        clearScreen();
         User user = null;
 
         while(user == null) {
-            //TODO:
-            //display ask for id eg "C0001"
+            clearScreen();
+
+            System.out.println("Please enter your User ID (e.g. C0001) : ");
             String userId = scanner.nextLine();
 
-            //TODO:
-            //display ask for password
+            System.out.println("Please enter your Password (Max 20 characters) : ");
             String password = scanner.nextLine();
+
+            if(password.length() > 20) {
+                password = null;
+            }
 
             user = mainManager.getLoginManager().authenticateUser(userId, password);
 
             if(user == null) {
                 clearScreen();
-                notify("Login Failed. Please Check Your (User ID) Or (Password)");
+                notify("Login Failed. Please Check Your (User ID) Or (Password).");
 
-                //TODO:
-                //display want to retry? 1 yes 2 no
+                System.out.println("Would you like to retry?");
+                System.out.println("1. Yes\n2. No\n: ");
                 int choice = scanner.nextInt();
                 scanner.nextLine();
 
@@ -76,21 +84,20 @@ public class LoginMenu extends Menu {
     }
 
     public void registerUser() {
-        clearScreen();
         boolean registered = false;
         User newUser = null;
 
         while(!registered) {
+            clearScreen();
+
             int userListSize = mainManager.getRentalData().getAllUsers().size();
             String nextUserId = "C" + ((userListSize > 0) ? String.format("%04d", Integer.parseInt(mainManager.getRentalData()
                 .getAllUsers().get(userListSize - 1).getUserId().substring(1)) + 1) : "0001");
             
-            //TODO:
-            //display ask for name
+            System.out.println("Please enter your Name (Max 50 characters) : ");
             String name = scanner.nextLine();
 
-            //TODO:
-            //display ask for password
+            System.out.println("Please enter your Password (Max 20 characters) : ");
             String password = scanner.nextLine();
 
             newUser = new Customer(nextUserId, name, password);
@@ -98,16 +105,16 @@ public class LoginMenu extends Menu {
 
             if(!registered) {
                 clearScreen();
-                notify("Register Failed. Please Check Your (Name) Or (Password)");
+                notify("Register Failed. Please Check Your (Name) Or (Password).");
 
-                //TODO:
-                //display want to retry? 1 yes 2 no
+                System.out.println("Would you like to retry?");
+                System.out.println("1. Yes\n2. No\n: ");
                 int choice = scanner.nextInt();
                 scanner.nextLine();
 
                 switch(choice) {
                     case 1:
-                        continue;
+                        break;
                     case 2:
                         return;
                     default:
@@ -120,6 +127,44 @@ public class LoginMenu extends Menu {
             clearScreen();
             notify("Register Successful! Your User ID Is : " + newUser.getUserId());
             return;
+        }
+    }
+
+    public void switchDate() {
+        clearScreen();
+
+        System.out.print("Current System Date : ");
+        System.out.println(mainManager.getRentalData().getSystemDate());
+
+        System.out.println("\nWould you like to change the date?");
+        System.out.println("1. Yes\n2. No\n: ");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch(choice) {
+            case 1:
+                System.out.println("What would you like as the new date?\n(YYYY-MM-DD) Format : ");
+                
+                LocalDate newDate = mainManager.getRentalData().getSystemDate();
+                try {
+                    newDate = LocalDate.parse(scanner.nextLine());
+                } catch(Exception e) {
+                    notify("Invalid Date. Please Ensure A Valid Date.");
+                    break;
+                }
+
+                if(!newDate.isAfter(mainManager.getRentalData().getSystemDate())) {
+                    notify("Invalid Date. Please Pick A Date In The Future.");
+                    break;
+                }
+
+                mainManager.getRentalData().setSystemDate(newDate);
+                break;
+            case 2:
+                return;
+            default:
+                return;
         }
     }
 }

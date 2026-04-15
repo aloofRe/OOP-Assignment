@@ -26,17 +26,6 @@ public class BookingManager {
         return true;
     }
 
-    public boolean removeBooking(String bookingId) {
-        Booking booking = mainManager.getRentalData().getBookingById(bookingId);
-
-        if(booking != null) {
-            mainManager.getRentalData().removeBooking(booking);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public Booking getBooking(String bookingId) {
         return mainManager.getRentalData().getBookingById(bookingId);
     }
