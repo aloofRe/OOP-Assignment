@@ -49,12 +49,12 @@ public class StaffMenu extends Menu {
             for(int i = 0; i < returnedBookings.size(); i++) {
                 System.out.print("| " + (i + 1) + " | ");
                 System.out.print(returnedBookings.get(i).toString());
-                System.out.println(" |");
+                System.out.println(" |\n");
             }
             System.out.println("-".repeat(91));
             
             System.out.println("\nWould you like to complete a Booking?");
-            System.out.println("\n1. Yes");
+            System.out.println("1. Yes");
             System.out.println("2. No");
             System.out.print("\nEnter choice : ");
             int choice = scanner.nextInt();

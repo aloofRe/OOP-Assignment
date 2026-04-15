@@ -57,12 +57,12 @@ public class AdminMenu extends Menu {
             for(int i = 0; i < allVehicles.size(); i++) {
                 Vehicle vehicle = allVehicles.get(i);
 
-                System.out.printf("| %-3d | %-10s | %-12s %-12s | %-10.2f | %-15s2 | %-9b | %-9b |\n", i + 1 , vehicle.getPlateNo(), vehicle.getBrand(),
+                System.out.printf("| %-3d | %-10s | %-12s %-12s | %-10.2f | %-15s | %-9b | %-9b |\n", i + 1 , vehicle.getPlateNo(), vehicle.getBrand(),
                      vehicle.getModel(), vehicle.getMileage(), String.format("%.2f/%.2f", vehicle.getCurFuelLevel(), vehicle.getMaxFuelLevel()), vehicle.getIsAvailable(), vehicle.getIsDamaged());
             }
            
             System.out.println("-".repeat(103));
-			System.out.println("1. Edit Vehicle");
+			System.out.println("\n1. Edit Vehicle");
 			System.out.println("2. Add Vehicle");
 			System.out.println("3. Remove Vehicle");
 			System.out.println("4. Return");

@@ -14,9 +14,17 @@ public class CustomerMenu extends Menu {
         while(true) {
             clearScreen();
             
-            //TODO:
-            //display customer menu title or something welcome welcome
-            //options 1 browse 2 pickup 3 dropoff 4 payment 5 logout
+            System.out.println(".------------------------------.");
+            System.out.println("|        CUSTOMER MENU         |");
+            System.out.println("'------------------------------'");
+            
+            System.out.println("\n1. Browse Vehicles");
+            System.out.println("2. Pickup Vehicles");
+            System.out.println("3. Dropoff Vehicles");
+            System.out.println("4. View Payments");
+            System.out.println("5. Logout");
+            
+            System.out.print("\nEnter choice : ");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -45,9 +53,9 @@ public class CustomerMenu extends Menu {
     public void browseMenu() {
         clearScreen();
 
-        //TODO:
-        //browse menu title
-        //Ask for wanted pickup date in YYYY-MM-DD format
+        System.out.println("========== Browse Vehicles ==========");
+
+        System.out.print("Enter Pickup Date (YYYY-MM-DD) : ");
         LocalDate pickupDate;
         try{
             pickupDate = LocalDate.parse(scanner.nextLine());
@@ -56,8 +64,7 @@ public class CustomerMenu extends Menu {
             return;
         }
 
-        //TODO:
-        //Ask for wanted dropoff date in YYYY-MM-DD format
+        System.out.print("Enter Dropoff Date (YYYY-MM-DD) : ");
         LocalDate dropoffDate;
         try{
             dropoffDate = LocalDate.parse(scanner.nextLine());
@@ -66,9 +73,7 @@ public class CustomerMenu extends Menu {
             return;
         }
 
-        //TODO:
-        //Ask for vehicle type filter
-        //0 for just show all vehicles, 1 for economy, 2 suv, 3 luxury
+        System.out.print("Enter Vehicle Type filter (0 = All, 1 = Economy, 2 = Suv, 3 = Luxury) : ");
         int vehicleType = scanner.nextInt();
         scanner.nextLine();
 
@@ -76,30 +81,29 @@ public class CustomerMenu extends Menu {
             clearScreen();
             ArrayList<Vehicle> availableVehicles = mainManager.getBookingManager().getAvailableVehicles(pickupDate, dropoffDate, vehicleType);
             
-            //TODO:
-            //show browsemenu title in a table -----
-            //show table headings PlateNo | Brand Model | Transmission | SeatingCap | DailyRate |
-            //refer to vehicle.java in toString() for formatting sizes
+            System.out.println("========== Available Vehicles ==========");
+            System.out.println("-".repeat(87));
+            System.out.printf("| %-3s | %-10s | %-12s %-12s | %-12s | %7s | %-11s |\n",
+                 "No", "PlateNo", "Brand", "Model", "Transmission", "Seats", "Daily Rate");
+            System.out.println("-".repeat(87));
+            
             for(int i = 0; i < availableVehicles.size(); i++) {
-                //TODO:
-                //display like the start of the table "| i+1 | ""
-                System.out.print(availableVehicles.get(i).toString());
-                //TODO:
-                //Close the table with another vertical line "|"
+                System.out.print("| " + (i + 1) + " | " + availableVehicles.get(i).toString() + " |\n");
             }
-            //TODO:
-            //close table with bottom ------ and clear one line of space
+            
+            System.out.println("-".repeat(87));
 
-            //TODO:
-            //ask whether want to reserve vehicle or return to main customer menu
-            //options 1 select vehicle 2 return
+            System.out.println("\nWould you like to book a Vehicle?");
+            System.out.println("\n1. Select Vehicle");
+            System.out.println("2. Return");
+
+            System.out.print("\nEnter choice : ");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch(choice) {
                 case 1:
-                    //TODO:
-                    //ask which vehicle number from the list to pick
+                    System.out.print("\nSelect vehicle number : ");
                     int pickedVehicle = scanner.nextInt();
                     scanner.nextLine();
 
@@ -120,17 +124,29 @@ public class CustomerMenu extends Menu {
     public void reservationMenu(Vehicle vehicle, LocalDate pickupDate, LocalDate dropoffDate) {
         clearScreen();
 
-        //TODO:
-        //display all the info of this vehicle using getters
-        //plateno, brand, model, transmission, enginecap, seatingcap, mileage, maxfuellevel, dailyrate
-
+        System.out.println("========== Vehicle Details ==========");
+        System.out.println("-".repeat(43));
+        System.out.printf("| %-16s | %-20s |\n", "Plate Number", vehicle.getPlateNo());
+        System.out.printf("| %-16s | %-20s |\n", "Brand", vehicle.getBrand());
+        System.out.printf("| %-16s | %-20s |\n", "Model", vehicle.getModel());
+        System.out.printf("| %-16s | %-20s |\n", "Transmission", vehicle.getTransmission());
+        System.out.printf("| %-16s | %-20s |\n", "Engine Capacity", vehicle.getEngineCap());
+        System.out.printf("| %-16s | %-20s |\n", "Seating Capacity", vehicle.getSeatingCap());
+        System.out.printf("| %-16s | %-20s |\n", "Mileage", vehicle.getMileage());
+        System.out.printf("| %-16s | %-20s |\n", "Current Fuel", vehicle.getCurFuelLevel());
+        System.out.printf("| %-16s | %-20s |\n", "Max Fuel", vehicle.getMaxFuelLevel());
+        System.out.printf("| %-16s | %-20s |\n", "Daily Rate", vehicle.getDailyRate());
+        System.out.printf("| %-16s | %-20s |\n", "Rental Count", vehicle.getRentalCount());
+        System.out.println("-".repeat(43));
+        
         double baseTotal = mainManager.getBookingManager().calculateBaseTotal(vehicle, pickupDate, dropoffDate);
 
-        //TODO:
-        //display the base total for this car
-
-        //TODO:
-        //clear one line space down then ask if customer wants to book the vehicle 1 yes 2 no
+        System.out.println("\nEstimated Base Total : RM" + baseTotal);
+        
+        System.out.println("\n1. Confirm Booking");
+        System.out.println("2. Return");
+        
+        System.out.print("\nEnter choice : ");
         int bookingChoice = scanner.nextInt();
         scanner.nextLine();
 
@@ -138,13 +154,11 @@ public class CustomerMenu extends Menu {
             case 1:
                 if(mainManager.getSessionUser() instanceof Customer customer) {
                     if(customer.getLicenseNo() == null || customer.getContactNo() == null) {
-                        //TODO:
-                        //ask to input license no
+                        System.out.println("Enter License No : ");
                         String licenseNo = scanner.nextLine();
                         customer.setLicenseNo(licenseNo);
 
-                        //TODO:
-                        //ask to input contact no
+                        System.out.println("Enter Contact No : ");
                         String contactNo = scanner.nextLine();
                         customer.setContactNo(contactNo);
                     }
@@ -172,30 +186,27 @@ public class CustomerMenu extends Menu {
             clearScreen();
             ArrayList<Booking> pickupBookings = mainManager.getBookingManager().getPendingsByCustomer(mainManager.getSessionUser().getUserId());
 
-            //TODO:
-            //pickup menu title stuff
-            //display current bookings not yet picked for this customer table refer Booking.java for format in toString()
-            //table header stuff bookingId | userId | plateno | pickupdate | dropoffdate | returneddate |
+            System.out.println("========== Pickup Vehicles ==========");
+            System.out.println("-".repeat(91));
+            System.out.printf("| %-3s | %-10s | %-10s | %-10s | %-12s | %-12s | %-12s |\n",
+                 "No", "BookingID", "UserID", "PlateNo", "PickupDate", "DropoffDate", "ReturnedDate");
+            System.out.println("-".repeat(91));
+            
             for(int i = 0; i < pickupBookings.size(); i++) {
-                //TODO:
-                //display like the start of the table "| i+1 | ""
-                System.out.print(pickupBookings.get(i).toString());
-                //TODO:
-                //Close the table with another vertical line "|"
+                System.out.print("| " + (i + 1) + " | " + pickupBookings.get(i).toString() + " |\n");
+                
             }
-            //TODO:
-            //close table with bottom ------ and clear one line of space
+            
+            System.out.println("\n1. Pickup a Vehicle");
+            System.out.println("2. Return");
 
-            //TODO:
-            //ask if want pickup a car from the bookings
-            //1 yes 2 return options
+            System.out.print("\nEnter choice : ");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch(choice) {
                 case 1:
-                    //TODO:
-                    //ask which car from the table to pick
+                    System.out.print("Select Booking :  ");
                     int bookingChoice = scanner.nextInt();
                     scanner.nextLine();
 
@@ -219,30 +230,26 @@ public class CustomerMenu extends Menu {
             clearScreen();
             ArrayList<Booking> dropoffBookings = mainManager.getBookingManager().getPickupsByCustomer(mainManager.getSessionUser().getUserId());
 
-            //TODO:
-            //dropoff menu title stuff
-            //display current bookings already picked but not dropped for this customer table refer Booking.java for format in toString()
-            //table header stuff bookingId | userId | plateno | pickupdate | dropoffdate | returneddate |
-            for(int i = 0; i < dropoffBookings.size(); i++) {
-                //TODO:
-                //display like the start of the table "| i+1 | ""
-                System.out.print(dropoffBookings.get(i).toString());
-                //TODO:
-                //Close the table with another vertical line "|"
-            }
-            //TODO:
-            //close table with bottom ------ and clear one line of space
+            System.out.println("========== Dropoff Vehicles ===========");
+            System.out.println("-".repeat(91));
+            System.out.printf("| %-3s | %-10s | %-10s | %-10s | %-12s | %-12s | %-12s |\n",
+                 "No", "BookingID", "UserID", "PlateNo", "PickupDate", "DropoffDate", "ReturnedDate");
+            System.out.println("-".repeat(91));
 
-            //TODO:
-            //ask if want dropoff a car from the bookings
-            //1 yes 2 return options
+            for(int i = 0; i < dropoffBookings.size(); i++) {
+                System.out.printf("| " + (i + 1), " | ", dropoffBookings.get(i).toString() + " |\n");
+            }
+
+            System.out.println("\n1. Dropoff Vehicle");
+            System.out.println("2. Return");
+
+            System.out.print("\nEnter choice : ");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch(choice) {
                 case 1:
-                    //TODO:
-                    //ask which car from the table to dropoff
+                    System.out.print("Select Booking : ");
                     int bookingChoice = scanner.nextInt();
                     scanner.nextLine();
 
@@ -266,30 +273,26 @@ public class CustomerMenu extends Menu {
             clearScreen();
             ArrayList<Invoice> invoices = mainManager.getBookingManager().getInvoicesByCustomer(mainManager.getSessionUser().getUserId());
 
-            //TODO:
-            //invoice menu title stuff
-            //display current invoices for this customer refer Invoice.java for format in toString()
-            //table header stuff invoiceId | bookingId | userId | plateNo | invoicedate | finalTotal |
+            System.out.println("========== Invoice List ==========");
+            System.out.println("-".repeat(89));
+            System.out.printf("| %-3s | %-10s | %-10s | %-10s | %-10s | %-12s | %-12s |\n",
+                 "No", "InvoiceID", "BookingID", "UserID", "PlateNo", "InvoiceDate", "Final Total");
+            System.out.println("-".repeat(89));
+            
             for(int i = 0; i < invoices.size(); i++) {
-                //TODO:
-                //display like the start of the table "| i+1 | ""
-                System.out.print(invoices.get(i).toString());
-                //TODO:
-                //Close the table with another vertical line "|"
+                System.out.print("| " + (i + 1) + " | " + invoices.get(i).toString() + " |\n");
             }
-            //TODO:
-            //close table with bottom ------ and clear one line of space
+            System.out.println("-".repeat(89));
 
-            //TODO:
-            //ask if want view details of an invoice
-            //1 yes 2 return options
+            System.out.println("1. View Details");
+            System.out.println("2. Return");
+            System.out.print("\nEnter choice : ");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch(choice) {
                 case 1:
-                    //TODO:
-                    //ask which invoice to check
+                    System.out.print("Select Invoice : ");
                     int invoiceChoice = scanner.nextInt();
                     scanner.nextLine();
 
@@ -297,9 +300,29 @@ public class CustomerMenu extends Menu {
                         clearScreen();
                         Invoice selectedInvoice = invoices.get(invoiceChoice - 1);
 
-                        //TODO:
-                        //display all the details of invoice with getters from selectedInvoice, if possible make it look like real invoice with like square and stuff
-                        //invoice id, bookingid, userid, plateno, invoicedate, fuelfee, latefee, damagefee, basetotal,extra total,final total
+                        System.out.println("-".repeat(43));
+                        System.out.println("|                 INVOICE                 |");
+                        System.out.println("-".repeat(43));
+
+                        System.out.printf("| %-16s : %-20s |\n", "Invoice ID", selectedInvoice.getInvoiceId());
+                        System.out.printf("| %-16s : %-20s |\n", "Booking ID", selectedInvoice.getBookingId());
+                        System.out.printf("| %-16s : %-20s |\n", "User ID", selectedInvoice.getUserId());
+                        System.out.printf("| %-16s : %-20s |\n", "Plate No", selectedInvoice.getPlateNo());
+                        System.out.printf("| %-16s : %-20s |\n", "Invoice Date", selectedInvoice.getInvoiceDate());
+                        System.out.println("-".repeat(43));
+
+                        System.out.printf("| %-16s : RM%-18.2f |\n", "Base Total", selectedInvoice.getBaseTotal());
+                        System.out.printf("| %-16s : RM%-18.2f |\n", "Fuel Fee", selectedInvoice.getFuelFee());
+                        System.out.printf("| %-16s : RM%-18.2f |\n", "Late Fee", selectedInvoice.getLateFee());
+                        System.out.printf("| %-16s : RM%-18.2f |\n", "Damage Fee", selectedInvoice.getDamageFee());
+                        System.out.println("-".repeat(43));
+
+                        System.out.printf("| %-16s : RM%-18.2f |\n", "Extra Total", selectedInvoice.getExtraTotal());
+
+                        System.out.println("=".repeat(43));
+                        System.out.printf("| %-16s : RM%-18.2f |\n", "FINAL TOTAL", selectedInvoice.getFinalTotal());
+                        System.out.println("=".repeat(43));
+
                         notify("");
                     } else {
                         notify("Invalid Invoice Number. Please Input A Valid Number From The List.");

@@ -123,7 +123,7 @@ public class Invoice {
 
     @Override
     public String toString() {
-        return String.format("%-10s | %-10s | %-10s | %-10s | %-12s | RM%6.2f", invoiceId, bookingId,
+        return String.format("%-10s | %-10s | %-10s | %-10s | %-12s | RM%7.2f", invoiceId, bookingId,
              userId, plateNo, invoiceDate, finalTotal);
     }
 
