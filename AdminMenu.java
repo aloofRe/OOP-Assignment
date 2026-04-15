@@ -16,7 +16,7 @@ public class AdminMenu extends Menu {
             System.out.println(".------------------------------.");
             System.out.println("|          ADMIN MENU          |");
             System.out.println("'------------------------------'");
-            System.out.println("1. Fleet Management");
+            System.out.println("\n1. Fleet Management");
             System.out.println("2. Reports");
             System.out.println("3. Logout");
             System.out.print("\nEnter choice : ");
@@ -46,21 +46,22 @@ public class AdminMenu extends Menu {
             ArrayList<Vehicle> allVehicles = mainManager.getRentalData().getAllVehicles();
             
             System.out.println("========== FLEET MENU ==========");
-            System.out.println("------------------------------------------------------------------------------------------");
 
-            System.out.printf("| %-3s | %-10s | %-12s %-12s | %-10s | %-15s | %-6s | %-6s |\n",
+            System.out.println("-".repeat(103));
+
+            System.out.printf("| %-3s | %-10s | %-12s %-12s | %-10s | %-15s | %-9s | %-9s |\n",
                  "No", "PlateNo", "Brand", "Model", "Mileage", "Fuel", "Available", "Damaged");
 
-            System.out.println("------------------------------------------------------------------------------------------");
+            System.out.println("-".repeat(103));
 		
             for(int i = 0; i < allVehicles.size(); i++) {
                 Vehicle vehicle = allVehicles.get(i);
 
-                System.out.printf("| %-3d | %-10s | %-12s %-12s | %-10.2f | %7.2f/%7.2f | %-6b | %-6b |\n", i + 1 , vehicle.getPlateNo(), vehicle.getBrand(),
+                System.out.printf("| %-3d | %-10s | %-12s %-12s | %-10.2f | %7.2f/%-7.2f | %-9b | %-9b |\n", i + 1 , vehicle.getPlateNo(), vehicle.getBrand(),
                      vehicle.getModel(), vehicle.getMileage(), vehicle.getCurFuelLevel(), vehicle.getMaxFuelLevel(), vehicle.getIsAvailable(), vehicle.getIsDamaged());
             }
            
-			System.out.println("------------------------------------------------------------------------------------------\n");
+            System.out.println("-".repeat(103));
 			System.out.println("1. Edit Vehicle");
 			System.out.println("2. Add Vehicle");
 			System.out.println("3. Remove Vehicle");
@@ -194,7 +195,7 @@ public class AdminMenu extends Menu {
         int typeChoice = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.print("Enter Plate Number : ");
+        System.out.print("\nEnter Plate Number : ");
         String plateNo = scanner.nextLine();
 
         System.out.print("Enter Brand : ");
@@ -236,7 +237,7 @@ public class AdminMenu extends Menu {
                 double fuelDiscount = scanner.nextDouble();
                 scanner.nextLine();
 
-                System.out.println("Confirm Add Vehicle?");
+                System.out.println("\nConfirm Add Vehicle?");
 				System.out.println("1. Yes");
 				System.out.println("2. No");
 			    System.out.print("\nEnter choice : ");
@@ -259,7 +260,7 @@ public class AdminMenu extends Menu {
                 double serviceFee = scanner.nextDouble();
                 scanner.nextLine();
 
-                System.out.println("Confirm Add Vehicle?");
+                System.out.println("\nConfirm Add Vehicle?");
                 System.out.println("1. Yes");
 				System.out.println("2. No");
 				System.out.print("\nEnter choice : ");
@@ -287,7 +288,7 @@ public class AdminMenu extends Menu {
                 double insuranceRate = scanner.nextDouble();
                 scanner.nextLine();
 
-                System.out.println("Confirm Add Vehicle?");
+                System.out.println("\nConfirm Add Vehicle?");
                 System.out.println("1. Yes");
 				System.out.println("2. No");
 				System.out.print("\nEnter choice : ");
@@ -329,7 +330,7 @@ public class AdminMenu extends Menu {
                     ArrayList<Vehicle> rentedVehicles = mainManager.getBookingManager().getMostRentedVehicles();
 
                     System.out.println("========== MOST RENTED VEHICLES ==========");
-					System.out.println("-------------------------------------------------------");
+                    System.out.println("-".repeat(55));
 					
                     for(int i = 0; i < rentedVehicles.size(); i++) {
                         Vehicle vehicle = rentedVehicles.get(i);
@@ -337,7 +338,7 @@ public class AdminMenu extends Menu {
                         System.out.printf("| %-3d | %-10s | %-12s %-12s | %-4d |\n", i + 1, vehicle.getPlateNo(), vehicle.getBrand(),
                              vehicle.getModel(), vehicle.getRentalCount());
                     }
-                    System.out.println("-------------------------------------------------------");
+                    System.out.println("-".repeat(55));
 
                     notify("");
                     break;
