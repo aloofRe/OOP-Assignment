@@ -12,10 +12,12 @@ public class StaffMenu extends Menu {
     public void start() {
         while(true) {
             clearScreen();
-
-            //TODO:
-            //staff title whatever
-            //options 1 returnmenu 2 logout
+            System.out.println(".------------------------------.");
+            System.out.println("|          STAFF MENU          |");
+            System.out.println("'------------------------------'");
+            System.out.println("\n1. Returned Bookings");
+            System.out.println("2. Logout");
+            System.out.print("\nEnter choice : ");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -38,30 +40,29 @@ public class StaffMenu extends Menu {
             clearScreen();
             ArrayList<Booking> returnedBookings = mainManager.getBookingManager().getDroppedoffBookings();
 
-            //TODO:
-            //retrned bookings from customers title menu
-            //display current bookings which have already been dropped off but not checked by staff yet
-            //table header stuff bookingId | userId | plateno | pickupdate | dropoffdate | returneddate |
-            for(int i = 0; i < returnedBookings.size(); i++) {
-                //TODO:
-                //display like the start of the table "| i+1 | ""
-                System.out.print(returnedBookings.get(i).toString());
-                //TODO:
-                //Close the table with another vertical line "|"
-            }
-            //TODO:
-            //close table with bottom ------ and clear one line of space
+            System.out.println("========== RETURN MENU ==========");
+            System.out.println("-".repeat(91));
+            System.out.printf("| %-3s | %-10s | %-10s | %-10s | %-12s | %-12s | %-12s |\n",
+                 "No", "BookingID", "UserID", "PlateNo", "PickupDate", "DropoffDate", "ReturnedDate");
+            System.out.println("-".repeat(91));
 
-            //TODO:
-            //ask if want staff want complete a booking
-            //1 yes 2 return options
+            for(int i = 0; i < returnedBookings.size(); i++) {
+                System.out.print("| " + (i + 1) + " | ");
+                System.out.print(returnedBookings.get(i).toString());
+                System.out.println(" |");
+            }
+            System.out.println("-".repeat(91));
+            
+            System.out.println("\nWould you like to complete a Booking?");
+            System.out.println("\n1. Yes");
+            System.out.println("2. No");
+            System.out.print("\nEnter choice : ");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch(choice) {
                 case 1:
-                    //TODO:
-                    //ask which booking to pick
+                    System.out.print("\nEnter Booking number : ");
                     int bookingChoice = scanner.nextInt();
                     scanner.nextLine();
 
@@ -69,29 +70,27 @@ public class StaffMenu extends Menu {
                         clearScreen();
                         Booking selectedBooking = returnedBookings.get(bookingChoice - 1);
 
-                        //TODO:
-                        //Ask staff how much fuel is left in the vehicle out of this vehicle's (maxfuel)
+                        System.out.print("\nEnter the current fuel level (Max : " + selectedBooking.getVehicle().getMaxFuelLevel() + ") : ");
                         double curFuelLevel = scanner.nextDouble();
                         scanner.nextLine();
                         mainManager.getVehicleManager().setVehicleFuel(selectedBooking.getVehicle().getPlateNo(), curFuelLevel);
-
-                        //TODO:
-                        //Ask staff how much mileage to add to vehicle now
+                        
+                        System.out.print("Enter new mileage to be added :  ");
                         double addMileage = scanner.nextDouble();
                         scanner.nextLine();
                         mainManager.getVehicleManager().setVehicleMileage(selectedBooking.getVehicle().getPlateNo(),
                              selectedBooking.getVehicle().getMileage() + addMileage);
 
-                        //TODO:
-                        //Ask staff if vehicle is damaged
-                        //Options 1 yes 2 no
+                        System.out.println("Is the vehicle damaged?");
+                        System.out.println("\n1. Yes");
+                        System.out.println("2. No");
+                        System.out.print("\nEnter choice : ");
                         int damageChoice = scanner.nextInt();
                         scanner.nextLine();
 
                         switch(damageChoice) {
                             case 1:
-                                //TODO:
-                                //Ask staff how much damage fees for the vehicle
+                                System.out.print("\nEnter the damage fee : ");
                                 double damageFee = scanner.nextDouble();
                                 scanner.nextLine();
 

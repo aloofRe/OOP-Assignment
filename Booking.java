@@ -172,7 +172,7 @@ public class Booking {
     
     @Override
     public String toString() {
-        return String.format("%-10s | %-10s | %-10s | %-12s | %-12s | %-12s", bookingId, customer.getUserId(),
+        return String.format("%-10s | %-10s | %-10s | %-12tF | %-12tF | %-12tF", bookingId, customer.getUserId(),
              vehicle.getPlateNo(), pickupDate, dropoffDate, returnedDate);
     }
 
