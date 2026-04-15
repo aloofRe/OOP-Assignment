@@ -88,7 +88,8 @@ public class CustomerMenu extends Menu {
             System.out.println("-".repeat(87));
             
             for(int i = 0; i < availableVehicles.size(); i++) {
-                System.out.print("| " + (i + 1) + " | " + availableVehicles.get(i).toString() + " |\n");
+                System.out.printf("| %-3d | ", (i + 1));
+                System.out.print(availableVehicles.get(i).toString() + " |\n");
             }
             
             System.out.println("-".repeat(87));
@@ -193,9 +194,11 @@ public class CustomerMenu extends Menu {
             System.out.println("-".repeat(91));
             
             for(int i = 0; i < pickupBookings.size(); i++) {
-                System.out.print("| " + (i + 1) + " | " + pickupBookings.get(i).toString() + " |\n");
+                System.out.printf("| %-3d | ", (i + 1));
+                System.out.print(pickupBookings.get(i).toString() + " |\n");
                 
             }
+            System.out.println("-".repeat(91));
             
             System.out.println("\n1. Pickup a Vehicle");
             System.out.println("2. Return");
@@ -206,7 +209,7 @@ public class CustomerMenu extends Menu {
 
             switch(choice) {
                 case 1:
-                    System.out.print("Select Booking :  ");
+                    System.out.print("\nSelect Booking :  ");
                     int bookingChoice = scanner.nextInt();
                     scanner.nextLine();
 
@@ -237,8 +240,10 @@ public class CustomerMenu extends Menu {
             System.out.println("-".repeat(91));
 
             for(int i = 0; i < dropoffBookings.size(); i++) {
-                System.out.printf("| " + (i + 1), " | ", dropoffBookings.get(i).toString() + " |\n");
+                System.out.printf("| %-3d | ", (i + 1));
+                System.out.printf(dropoffBookings.get(i).toString() + " |\n");
             }
+            System.out.println("-".repeat(91));
 
             System.out.println("\n1. Dropoff Vehicle");
             System.out.println("2. Return");
@@ -249,7 +254,7 @@ public class CustomerMenu extends Menu {
 
             switch(choice) {
                 case 1:
-                    System.out.print("Select Booking : ");
+                    System.out.print("\nSelect Booking : ");
                     int bookingChoice = scanner.nextInt();
                     scanner.nextLine();
 
@@ -280,11 +285,12 @@ public class CustomerMenu extends Menu {
             System.out.println("-".repeat(89));
             
             for(int i = 0; i < invoices.size(); i++) {
-                System.out.print("| " + (i + 1) + " | " + invoices.get(i).toString() + " |\n");
+                System.out.printf("| %-3d | ", (i + 1));
+                System.out.print(invoices.get(i).toString() + " |\n");
             }
             System.out.println("-".repeat(89));
 
-            System.out.println("1. View Details");
+            System.out.println("\n1. View Details");
             System.out.println("2. Return");
             System.out.print("\nEnter choice : ");
             int choice = scanner.nextInt();
@@ -292,7 +298,7 @@ public class CustomerMenu extends Menu {
 
             switch(choice) {
                 case 1:
-                    System.out.print("Select Invoice : ");
+                    System.out.print("\nSelect Invoice : ");
                     int invoiceChoice = scanner.nextInt();
                     scanner.nextLine();
 

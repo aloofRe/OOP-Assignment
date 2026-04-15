@@ -47,9 +47,9 @@ public class StaffMenu extends Menu {
             System.out.println("-".repeat(91));
 
             for(int i = 0; i < returnedBookings.size(); i++) {
-                System.out.print("| " + (i + 1) + " | ");
+                System.out.printf("| %-3d | ", (i + 1));
                 System.out.print(returnedBookings.get(i).toString());
-                System.out.println(" |\n");
+                System.out.println(" |");
             }
             System.out.println("-".repeat(91));
             
