@@ -19,7 +19,22 @@ public abstract class Menu {
     }
 
     public void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        try {
+            String os = System.getProperty("os.name");
+
+            if (os.contains("Windows")) {
+                //Try run the native "cls" command
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                //For other OS environments
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (Exception e) {
+            //Fallback to pushing screen
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
+        }
     }
 }

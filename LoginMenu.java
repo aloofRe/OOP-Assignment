@@ -14,7 +14,7 @@ public class LoginMenu extends Menu {
         System.out.println(".------------------------------.");
         System.out.println("|          LOGIN MENU          |");
         System.out.println("'------------------------------'");
-        System.out.println("\n1. Login\n2. Register\n3. Switch System Date\n4. Quit\n: ");
+        System.out.print("\n1. Login\n2. Register\n3. Switch System Date\n4. Quit\n: ");
         int choice = scanner.nextInt();
         scanner.nextLine();
 
@@ -42,10 +42,10 @@ public class LoginMenu extends Menu {
         while(user == null) {
             clearScreen();
 
-            System.out.println("Please enter your User ID (e.g. C0001) : ");
+            System.out.print("Please enter your User ID (e.g. C0001) : ");
             String userId = scanner.nextLine();
 
-            System.out.println("Please enter your Password (Max 20 characters) : ");
+            System.out.print("Please enter your Password (Max 20 characters) : ");
             String password = scanner.nextLine();
 
             if(password.length() > 20) {
@@ -59,7 +59,7 @@ public class LoginMenu extends Menu {
                 notify("Login Failed. Please Check Your (User ID) Or (Password).");
 
                 System.out.println("Would you like to retry?");
-                System.out.println("1. Yes\n2. No\n: ");
+                System.out.print("1. Yes\n2. No\n: ");
                 int choice = scanner.nextInt();
                 scanner.nextLine();
 
@@ -94,10 +94,10 @@ public class LoginMenu extends Menu {
             String nextUserId = "C" + ((userListSize > 0) ? String.format("%04d", Integer.parseInt(mainManager.getRentalData()
                 .getAllUsers().get(userListSize - 1).getUserId().substring(1)) + 1) : "0001");
             
-            System.out.println("Please enter your Name (Max 50 characters) : ");
+            System.out.print("Please enter your Name (Max 50 characters) : ");
             String name = scanner.nextLine();
 
-            System.out.println("Please enter your Password (Max 20 characters) : ");
+            System.out.print("Please enter your Password (Max 20 characters) : ");
             String password = scanner.nextLine();
 
             newUser = new Customer(nextUserId, name, password);
@@ -108,7 +108,7 @@ public class LoginMenu extends Menu {
                 notify("Register Failed. Please Check Your (Name) Or (Password).");
 
                 System.out.println("Would you like to retry?");
-                System.out.println("1. Yes\n2. No\n: ");
+                System.out.print("1. Yes\n2. No\n: ");
                 int choice = scanner.nextInt();
                 scanner.nextLine();
 
@@ -137,14 +137,14 @@ public class LoginMenu extends Menu {
         System.out.println(mainManager.getRentalData().getSystemDate());
 
         System.out.println("\nWould you like to change the date?");
-        System.out.println("1. Yes\n2. No\n: ");
+        System.out.print("1. Yes\n2. No\n: ");
 
         int choice = scanner.nextInt();
         scanner.nextLine();
 
         switch(choice) {
             case 1:
-                System.out.println("What would you like as the new date?\n(YYYY-MM-DD) Format : ");
+                System.out.print("What would you like as the new date?\n(YYYY-MM-DD) Format : ");
                 
                 LocalDate newDate = mainManager.getRentalData().getSystemDate();
                 try {
