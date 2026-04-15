@@ -1,3 +1,3 @@
 Admin,A0001,admin1,adminpass
 Staff,S0002,staff1,staffpass
-Customer,C0003,cust1,custpass
+Customer,C0003,cust1,custpass,020112120339,021-232-8321
