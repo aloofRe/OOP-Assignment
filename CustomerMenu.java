@@ -11,9 +11,9 @@ public class CustomerMenu extends Menu {
 
     @Override
     public void start() {
-        clearScreen();
-
         while(true) {
+            clearScreen();
+            
             //TODO:
             //display customer menu title or something welcome welcome
             //options 1 browse 2 pickup 3 dropoff 4 payment 5 logout
