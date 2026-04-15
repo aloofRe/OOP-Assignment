@@ -10,7 +10,8 @@ public class LoginMenu extends Menu {
 
     @Override
     public void start() {
-        //TODO:
+        clearScreen();
+        
         System.out.println(".------------------------------.");
         System.out.println("|          LOGIN MENU          |");
         System.out.println("'------------------------------'");
