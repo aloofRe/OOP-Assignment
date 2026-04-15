@@ -13,10 +13,14 @@ public class AdminMenu extends Menu {
         while(true) {
             clearScreen();
 
-            //TODO:
-            //admin title whatever
-            //options 1 fleetmenu 2 report menu 3 logout
-
+            System.out.println(".------------------------------.");
+            System.out.println("|          ADMIN MENU          |");
+            System.out.println("'------------------------------'");
+            System.out.println("1. Fleet Management");
+            System.out.println("2. Reports");
+            System.out.println("3. Logout");
+            System.out.print("\nEnter choice : ");
+		
             int choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -41,31 +45,34 @@ public class AdminMenu extends Menu {
             clearScreen();
             ArrayList<Vehicle> allVehicles = mainManager.getRentalData().getAllVehicles();
             
-            //TODO:
-            //show fleetmenu title in a table -----
-            //show table headings PlateNo | Brand Model | mileage | curfuellevel/maxfuellevel | isavailable | isDamaged
+            System.out.println("========== FLEET MENU ==========");
+            System.out.println("------------------------------------------------------------------------------------------");
+
+            System.out.printf("| %-3s | %-10s | %-12s %-12s | %-10s | %-15s | %-6s | %-6s |\n",
+                 "No", "PlateNo", "Brand", "Model", "Mileage", "Fuel", "Available", "Damaged");
+
+            System.out.println("------------------------------------------------------------------------------------------");
+		
             for(int i = 0; i < allVehicles.size(); i++) {
                 Vehicle vehicle = allVehicles.get(i);
-                //TODO:
-                //display like the start of the table "| i+1 | ""
-                System.out.printf("%-10s | %-12s %-12s | %-8.2f | %5.2f/%5.2f | %-5b | %-5b", vehicle.getPlateNo(), vehicle.getBrand(),
-                 vehicle.getModel(), vehicle.getMileage(), vehicle.getCurFuelLevel(), vehicle.getMaxFuelLevel(), vehicle.getIsAvailable(), vehicle.getIsDamaged());
-                //TODO:
-                //Close the table with another vertical line "|" and clear line
-            }
-            //TODO:
-            //close table with bottom ------ and clear one line of space
 
-            //TODO:
-            //ask whether want to edit existing vehicle or add new vehicle or return to main customer menu
-            //options 1 edit vehicle 2 add vehicle 3 remove vehicle 4 return
+                System.out.printf("| %-3d | %-10s | %-12s %-12s | %-10.2f | %7.2f/%7.2f | %-6b | %-6b |\n", i + 1 , vehicle.getPlateNo(), vehicle.getBrand(),
+                     vehicle.getModel(), vehicle.getMileage(), vehicle.getCurFuelLevel(), vehicle.getMaxFuelLevel(), vehicle.getIsAvailable(), vehicle.getIsDamaged());
+            }
+           
+			System.out.println("------------------------------------------------------------------------------------------\n");
+			System.out.println("1. Edit Vehicle");
+			System.out.println("2. Add Vehicle");
+			System.out.println("3. Remove Vehicle");
+			System.out.println("4. Return");
+			System.out.print("\nEnter choice : ");
+            
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch(choice) {
                 case 1:
-                    //TODO:
-                    //ask which vehicle number from the list to pick
+					System.out.print("Enter vehicle number to pick : ");
                     int pickedVehicle = scanner.nextInt();
                     scanner.nextLine();
 
@@ -79,8 +86,7 @@ public class AdminMenu extends Menu {
                     createVehicle();
                     break;
                 case 3:
-                    //TODO:
-                    //ask which vehicle number from the list to remove
+					System.out.print("Enter vehicle number to remove : ");
                     int removeVehicle = scanner.nextInt();
                     scanner.nextLine();
 
@@ -101,50 +107,67 @@ public class AdminMenu extends Menu {
     public void managementMenu(Vehicle vehicle) {
         while(true) {
             clearScreen();
-
-            //ask what the admin wants to edit
-            //1 mileage 2 curfuellevel 3 dailyrate 4 availability 5 damaged 6 rentalcount 7 return
+            
+            System.out.println("========== EDIT VEHICLE ==========");
+            System.out.println("1. Mileage");
+            System.out.println("2. Current Fuel Level");
+            System.out.println("3. Daily Rate");
+            System.out.println("4. Availability");
+            System.out.println("5. Damage Status");
+            System.out.println("6. Rental Count");
+            System.out.println("7. Return");
+            System.out.print("\nEnter choice : ");
+				
             int editChoice = scanner.nextInt();
             scanner.nextLine();
 
             switch(editChoice) {
                 case 1:
-                    //ask what mileage to set car
+					System.out.print("Enter new mileage : ");
+					
                     double mileage = scanner.nextDouble();
                     scanner.nextLine();
 
                     vehicle.setMileage(mileage);
                     break;
                 case 2:
-                    //ask what curfuellevel to set car, also show maxfuellevel if can
+					System.out.print("Enter new current fuel level (Max : " + vehicle.getMaxFuelLevel() + ") : ");
+
                     double curFuelLevel = scanner.nextDouble();
                     scanner.nextLine();
 
                     vehicle.setCurFuelLevel(curFuelLevel);
                     break;
                 case 3:
-                    //ask what dailyrate to set car
+					System.out.print("Enter new daily rate : ");
+
                     double dailyRate = scanner.nextDouble();
                     scanner.nextLine();
 
                     vehicle.setDailyRate(dailyRate);
                     break;
                 case 4:
-                    //ask what availability 1 true or 2 false to set car
+                    System.out.println("Enter new availability");
+					System.out.println("1 = Available\n2 = Not Available");
+                    System.out.print("\nEnter choice : ");
+
                     int isAvailable = scanner.nextInt();
                     scanner.nextLine();
 
                     vehicle.setIsAvailable(isAvailable == 1);
                     break;
                 case 5:
-                    //ask if damaged car 1 true 2 false
+                    System.out.println("Enter new damage status");
+					System.out.println("1 = Damaged\n2 = Not Damaged");
+                    System.out.print("\nEnter choice : ");
+
                     int isDamaged = scanner.nextInt();
                     scanner.nextLine();
 
                     vehicle.setIsDamaged(isDamaged == 1);
                     break;
                 case 6:
-                    //ask what rentalcount to set car
+					System.out.print("Enter new rental count : ");
                     int rentalCount = scanner.nextInt();
                     scanner.nextLine();
 
@@ -161,55 +184,62 @@ public class AdminMenu extends Menu {
     public void createVehicle() {
         clearScreen();
 
-        //TODO:
-        //ask for what type of vehicle 1 economy 2 suv 3 luxury
+        System.out.println("========== ADD VEHICLE ==========");
+        System.out.println("Select Vehicle Type");
+        System.out.println("1. Economy");
+        System.out.println("2. SUV");
+        System.out.println("3. Luxury");
+        System.out.print("\nEnter choice : ");
+			
         int typeChoice = scanner.nextInt();
         scanner.nextLine();
 
-        //ask for new vehicle plateno
+        System.out.print("Enter Plate Number : ");
         String plateNo = scanner.nextLine();
 
-        //ask for brand
+        System.out.print("Enter Brand : ");
         String brand = scanner.nextLine();
 
-        //ask for model
+        System.out.print("Enter Model : ");
         String model = scanner.nextLine();
 
-        //ask for transmission
+        System.out.print("Enter Transmission : ");
         String transmission = scanner.nextLine();
 
-        //ask for enginecap
+        System.out.print("Enter Engine Capacity : ");
         int engineCap = scanner.nextInt();
         scanner.nextLine();
 
-        //ask for seatingCap
+        System.out.print("Enter Seating Capacity : ");
         int seatingCap = scanner.nextInt();
         scanner.nextLine();
 
-        //ask for mileage
+        System.out.print("Enter Mileage : ");
         double mileage = scanner.nextDouble();
         scanner.nextLine();
 
-        //ask for current fuel level of vehicle
+        System.out.print("Enter Current Fuel Level : ");
         double curFuelLevel = scanner.nextDouble();
         scanner.nextLine();
 
-        //ask for max fuel level of this vehicle
+        System.out.print("Enter Max Fuel Level : ");
         double maxFuelLevel = scanner.nextDouble();
         scanner.nextLine();
 
-        //ask for rate per day in RM
+        System.out.print("Enter Daily Rate (RM) : ");
         double dailyRate = scanner.nextDouble();
         scanner.nextLine();
 
         switch(typeChoice) {
             case 1:
-                //ask for fueldiscount in % decimal so like 0.15 is 15% discount
+                System.out.print("Enter Fuel Discount (e.g. 0.1 for 10%) : ");
                 double fuelDiscount = scanner.nextDouble();
                 scanner.nextLine();
 
-                //ask whether the admin is satisfied with these values and wants to add the vehicle
-                //1 yes 2 no
+                System.out.println("Confirm Add Vehicle?");
+				System.out.println("1. Yes");
+				System.out.println("2. No");
+			    System.out.print("\nEnter choice : ");
                 int economyChoice = scanner.nextInt();
                 scanner.nextLine();
 
@@ -224,12 +254,15 @@ public class AdminMenu extends Menu {
                 }
                 break;
             case 2:
-                //ask for service fee that is paid with base total before booking
+                System.out.print("Enter Service Fee (RM) : ");
+                
                 double serviceFee = scanner.nextDouble();
                 scanner.nextLine();
 
-                //ask whether the admin is satisfied with these values and wants to add the vehicle
-                //1 yes 2 no
+                System.out.println("Confirm Add Vehicle?");
+                System.out.println("1. Yes");
+				System.out.println("2. No");
+				System.out.print("\nEnter choice : ");
                 int suvChoice = scanner.nextInt();
                 scanner.nextLine();
 
@@ -244,16 +277,21 @@ public class AdminMenu extends Menu {
                 }
                 break;
             case 3:
-                //ask for service fee that is paid with base total before booking
+                System.out.print("Enter Service Fee (RM) : ");
+                
                 double luxuryServiceFee = scanner.nextDouble();
                 scanner.nextLine();
 
-                //ask for insurance rate per day that is paid before booking
+                System.out.print("Enter Insurance Rate (per day) : ");
+                
                 double insuranceRate = scanner.nextDouble();
                 scanner.nextLine();
 
-                //ask whether the admin is satisfied with these values and wants to add the vehicle
-                //1 yes 2 no
+                System.out.println("Confirm Add Vehicle?");
+                System.out.println("1. Yes");
+				System.out.println("2. No");
+				System.out.print("\nEnter choice : ");
+				
                 int luxuryChoice = scanner.nextInt();
                 scanner.nextLine();
 
@@ -276,9 +314,12 @@ public class AdminMenu extends Menu {
         while(true) {
             clearScreen();
             
-            //TODO:
-            //ask what report admin wants
-            //1 most rented cars 2 total revenue 3 return
+            System.out.println("========== REPORT MENU ==========");
+			System.out.println("1. Most Rented Cars Report");
+			System.out.println("2. Total Revenue Report");
+			System.out.println("3. Return");
+			System.out.print("\nEnter choice : ");
+			
             int reportChoice = scanner.nextInt();
             scanner.nextLine();
 
@@ -287,17 +328,16 @@ public class AdminMenu extends Menu {
                     clearScreen();
                     ArrayList<Vehicle> rentedVehicles = mainManager.getBookingManager().getMostRentedVehicles();
 
-                    //TODO:
-                    //show cool report-like title for top rented vehicles
+                    System.out.println("========== MOST RENTED VEHICLES ==========");
+					System.out.println("-------------------------------------------------------");
+					
                     for(int i = 0; i < rentedVehicles.size(); i++) {
                         Vehicle vehicle = rentedVehicles.get(i);
 
-                        //TODO:
-                        //display like number "1. "
-                        System.out.printf("%-10s | %-12s %-12s | %-4d\n", vehicle.getPlateNo(), vehicle.getBrand(),
+                        System.out.printf("| %-3d | %-10s | %-12s %-12s | %-4d |\n", i + 1, vehicle.getPlateNo(), vehicle.getBrand(),
                              vehicle.getModel(), vehicle.getRentalCount());
                     }
-                    //display closing ----- for report
+                    System.out.println("-------------------------------------------------------");
 
                     notify("");
                     break;
@@ -305,8 +345,9 @@ public class AdminMenu extends Menu {
                     clearScreen();
                     double totalRevenue = mainManager.getBookingManager().calculateTotalRevenue();
 
-                    //just display that totalRevenue is the revenue made so far
-
+					System.out.println("========== TOTAL REVENUE ==========");
+					System.out.printf("Total Revenue : RM%.2f\n", totalRevenue);
+					
                     notify("");
                     break;
                 case 3:

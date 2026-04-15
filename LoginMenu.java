@@ -11,11 +11,12 @@ public class LoginMenu extends Menu {
     @Override
     public void start() {
         clearScreen();
-        
+
         System.out.println(".------------------------------.");
         System.out.println("|          LOGIN MENU          |");
         System.out.println("'------------------------------'");
-        System.out.print("\n1. Login\n2. Register\n3. Switch System Date\n4. Quit\n: ");
+        System.out.println("\n1. Login\n2. Register\n3. Switch System Date\n4. Quit");
+        System.out.print("\nEnter choice : ");
         int choice = scanner.nextInt();
         scanner.nextLine();
 
@@ -60,7 +61,8 @@ public class LoginMenu extends Menu {
                 notify("Login Failed. Please Check Your (User ID) Or (Password).");
 
                 System.out.println("Would you like to retry?");
-                System.out.print("1. Yes\n2. No\n: ");
+                System.out.println("1. Yes\n2. No");
+                System.out.print("\nEnter choice : ");
                 int choice = scanner.nextInt();
                 scanner.nextLine();
 
@@ -109,7 +111,8 @@ public class LoginMenu extends Menu {
                 notify("Register Failed. Please Check Your (Name) Or (Password).");
 
                 System.out.println("Would you like to retry?");
-                System.out.print("1. Yes\n2. No\n: ");
+                System.out.println("1. Yes\n2. No");
+                System.out.print("\nEnter choice : ");
                 int choice = scanner.nextInt();
                 scanner.nextLine();
 
@@ -138,7 +141,8 @@ public class LoginMenu extends Menu {
         System.out.println(mainManager.getRentalData().getSystemDate());
 
         System.out.println("\nWould you like to change the date?");
-        System.out.print("1. Yes\n2. No\n: ");
+        System.out.println("1. Yes\n2. No");
+        System.out.print("\nEnter choice : ");
 
         int choice = scanner.nextInt();
         scanner.nextLine();
