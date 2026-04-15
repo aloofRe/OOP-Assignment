@@ -9,14 +9,37 @@ public class AdminMenu extends Menu {
 
     @Override
     public void start() {
+        clearScreen();
+
+        //TODO:
+        //admin title whatever
+        //options 1 fleetmenu 2 report menu 3 logout
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch(choice) {
+            case 1:
+                fleetMenu();
+                break;
+            case 2:
+                reportMenu();
+                break;
+            case 3:
+                mainManager.logout();
+                return;
+            default:
+                mainManager.logout();
+                return;
+        }
     }
 
-    public void FleetMenu() {
+    public void fleetMenu() {
     }
 
-    public void ManagementVehicleMenu() {
+    public void managementVehicleMenu() {
     }
 
-    public void ReportMenu() {
+    public void reportMenu() {
     }
 }
