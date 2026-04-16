@@ -8,11 +8,11 @@ import java.io.IOException;
 
 
 public class DataManager {
-    private final String SYSTEM_FILE = "data/system.txt";
-    private final String USER_FILE = "data/users.txt";
-    private final String VEHICLE_FILE = "data/vehicles.txt";
-    private final String BOOKING_FILE = "data/bookings.txt";
-    private final String INVOICE_FILE = "data/invoices.txt";
+    private final String SYSTEM_FILE = "src/data/system.txt";
+    private final String USER_FILE = "src/data/users.txt";
+    private final String VEHICLE_FILE = "src/data/vehicles.txt";
+    private final String BOOKING_FILE = "src/data/bookings.txt";
+    private final String INVOICE_FILE = "src/data/invoices.txt";
     private RentalData rentalData;
     
 
