@@ -8,11 +8,11 @@ Econamy,SAB8783C,Perodua,Perodua Myvi,Automatic,1500,5,8700,30,36,95,true,false,
 Suv,SAB4446,Toyota,Toyota Avanza,Automatic,1500,8,150045,35,45,125,true,false,8,10
 Suv,SAB6676,Toyota,Toyota Innova,Automatic,2000,8,67900,35,52,150,true,false,7,15
 Suv,QAD9986,Honda,Honda HRV,Automatic,1500,5,7800,20,40,140,true,false,2,13
-Suv,SVM2067,Toyota,Toyota Cross,1800,5,6800,20,47,140,true,false,2,13
-Suv,SVM8965,Perodua,Perodua Traz,1500,5,976,30,36,145,true,false,0,15
+Suv,SVM2067,Toyota,Toyota Cross,Automatic,1800,5,6800,20,47,140,true,false,2,13
+Suv,SVM8965,Perodua,Perodua Traz,Automatic,1500,5,976,30,36,145,true,false,0,15
 Suv,QAB8945T,Honda,Honda CRV,Automatic,2000,8,57045,34,58,320,true,false,4,35
 Suv,ST5566,Toyota,Toyota Fortuner,Automatic,2800,8,8700,50,80,420,true,false,2,45
-Luxury,SAB666D,BMW,BMV X5,Automatic,2000,5,5670,50,65,520,true,false,1,85,45
+Luxury,SAB666D,BMW,BMW X5,Automatic,2000,5,5670,50,65,520,true,false,1,85,45
 Luxury,SAB7878,Honda,Honda Civic TypeR,Manual,2000,5,3800,30,47,470,true,false,1,80,40
 Luxury,STV676T,Toyota,Toyota Alphard,Automatic,3500,7,9800,25,60,620,true,false,1,95,45
 Luxury,ST66D,Ferrari,Ferrari 458,Automatic,4500,2,2078,56,86,2800,true,false,0,380,120
