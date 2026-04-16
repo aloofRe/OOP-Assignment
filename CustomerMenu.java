@@ -82,17 +82,17 @@ public class CustomerMenu extends Menu {
             ArrayList<Vehicle> availableVehicles = mainManager.getBookingManager().getAvailableVehicles(pickupDate, dropoffDate, vehicleType);
             
             System.out.println("========== Available Vehicles ==========");
-            System.out.println("-".repeat(87));
-            System.out.printf("| %-3s | %-10s | %-12s %-12s | %-12s | %7s | %-11s |\n",
+            System.out.println("-".repeat(88));
+            System.out.printf("| %-3s | %-10s | %-12s %-12s | %-12s | %8s | %-11s |\n",
                  "No", "PlateNo", "Brand", "Model", "Transmission", "Seats", "Daily Rate");
-            System.out.println("-".repeat(87));
+            System.out.println("-".repeat(88));
             
             for(int i = 0; i < availableVehicles.size(); i++) {
                 System.out.printf("| %-3d | ", (i + 1));
                 System.out.print(availableVehicles.get(i).toString() + " |\n");
             }
             
-            System.out.println("-".repeat(87));
+            System.out.println("-".repeat(88));
 
             System.out.println("\nWould you like to book a Vehicle?");
             System.out.println("\n1. Select Vehicle");
@@ -167,6 +167,7 @@ public class CustomerMenu extends Menu {
                     boolean bookingStatus = mainManager.getBookingManager().addBooking(customer, vehicle, pickupDate, dropoffDate);
                     
                     if(bookingStatus) {
+                        mainManager.getRentalData().getAllBookings().get(mainManager.getRentalData().getAllBookings().size() - 1).setBaseTotal(baseTotal);
                         notify("Booking Successful! Your Booking Can Now Be Viewed In The Pickup Menu.");
                         return;
                     } else {
@@ -213,7 +214,11 @@ public class CustomerMenu extends Menu {
                     int bookingChoice = scanner.nextInt();
                     scanner.nextLine();
 
-                    if(bookingChoice >= 1 && bookingChoice <= pickupBookings.size()) {
+                    LocalDate currentDate = mainManager.getRentalData().getSystemDate();
+
+                    if(bookingChoice >= 1 && bookingChoice <= pickupBookings.size()
+                         && (currentDate.isEqual(pickupBookings.get(bookingChoice - 1).getPickupDate())
+                         || currentDate.isAfter(pickupBookings.get(bookingChoice - 1).getPickupDate()))) {
                         mainManager.getBookingManager().setPickedup(pickupBookings.get(bookingChoice - 1), true);
                         notify("Vehicle Successfully Picked Up!");
                     } else {

@@ -75,14 +75,14 @@ public class StaffMenu extends Menu {
                         scanner.nextLine();
                         mainManager.getVehicleManager().setVehicleFuel(selectedBooking.getVehicle().getPlateNo(), curFuelLevel);
                         
-                        System.out.print("Enter new mileage to be added :  ");
+                        System.out.print("Enter new mileage to be added : ");
                         double addMileage = scanner.nextDouble();
                         scanner.nextLine();
                         mainManager.getVehicleManager().setVehicleMileage(selectedBooking.getVehicle().getPlateNo(),
                              selectedBooking.getVehicle().getMileage() + addMileage);
 
                         System.out.println("Is the vehicle damaged?");
-                        System.out.println("\n1. Yes");
+                        System.out.println("1. Yes");
                         System.out.println("2. No");
                         System.out.print("\nEnter choice : ");
                         int damageChoice = scanner.nextInt();
