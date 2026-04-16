@@ -142,7 +142,7 @@ public class CustomerMenu extends Menu {
         System.out.printf("| %-16s | %-20.2f |\n", "Daily Rate", vehicle.getDailyRate());
 
         if(vehicle instanceof Economy economy) {
-            System.out.printf("| %-16s | %-20.2f |\n", "Fuel Discount", economy.getFuelDiscount());
+            System.out.printf("| %-16s | %-20.2f%% |\n", "Fuel Discount", economy.getFuelDiscount());
         }
         else if(vehicle instanceof Suv suv) {
             System.out.printf("| %-16s | %-20.2f |\n", "Service Fee", suv.getServiceFee());
@@ -157,7 +157,7 @@ public class CustomerMenu extends Menu {
         
         double baseTotal = mainManager.getBookingManager().calculateBaseTotal(vehicle, pickupDate, dropoffDate);
 
-        System.out.println("\nEstimated Base Total : RM" + baseTotal);
+        System.out.printf("\nEstimated Base Total : RM%-10.2\n", baseTotal);
         
         System.out.println("\n1. Confirm Booking");
         System.out.println("2. Return");
