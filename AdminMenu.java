@@ -47,21 +47,21 @@ public class AdminMenu extends Menu {
             
             System.out.println("========== FLEET MENU ==========");
 
-            System.out.println("-".repeat(103));
+            System.out.println("-".repeat(109));
 
-            System.out.printf("| %-3s | %-10s | %-12s %-12s | %-10s | %-15s | %-9s | %-9s |\n",
+            System.out.printf("| %-3s | %-10s | %-12s %-18s | %-10s | %-15s | %-9s | %-9s |\n",
                  "No", "PlateNo", "Brand", "Model", "Mileage", "Fuel", "Available", "Damaged");
 
-            System.out.println("-".repeat(103));
+            System.out.println("-".repeat(109));
 		
             for(int i = 0; i < allVehicles.size(); i++) {
                 Vehicle vehicle = allVehicles.get(i);
 
-                System.out.printf("| %-3d | %-10s | %-12s %-12s | %-10.2f | %-15s | %-9b | %-9b |\n", i + 1 , vehicle.getPlateNo(), vehicle.getBrand(),
+                System.out.printf("| %-3d | %-10s | %-12s %-18s | %-10.2f | %-15s | %-9b | %-9b |\n", i + 1 , vehicle.getPlateNo(), vehicle.getBrand(),
                      vehicle.getModel(), vehicle.getMileage(), String.format("%.2f/%.2f", vehicle.getCurFuelLevel(), vehicle.getMaxFuelLevel()), vehicle.getIsAvailable(), vehicle.getIsDamaged());
             }
            
-            System.out.println("-".repeat(103));
+            System.out.println("-".repeat(109));
 			System.out.println("\n1. Edit Vehicle");
 			System.out.println("2. Add Vehicle");
 			System.out.println("3. Remove Vehicle");
@@ -73,7 +73,7 @@ public class AdminMenu extends Menu {
 
             switch(choice) {
                 case 1:
-					System.out.print("Enter vehicle number to pick : ");
+					System.out.print("Enter vehicle number : ");
                     int pickedVehicle = scanner.nextInt();
                     scanner.nextLine();
 
@@ -87,7 +87,7 @@ public class AdminMenu extends Menu {
                     createVehicle();
                     break;
                 case 3:
-					System.out.print("Enter vehicle number to remove : ");
+					System.out.print("Enter vehicle number : ");
                     int removeVehicle = scanner.nextInt();
                     scanner.nextLine();
 
@@ -330,15 +330,15 @@ public class AdminMenu extends Menu {
                     ArrayList<Vehicle> rentedVehicles = mainManager.getBookingManager().getMostRentedVehicles();
 
                     System.out.println("========== MOST RENTED VEHICLES ==========");
-                    System.out.println("-".repeat(55));
+                    System.out.println("-".repeat(61));
 					
                     for(int i = 0; i < rentedVehicles.size(); i++) {
                         Vehicle vehicle = rentedVehicles.get(i);
 
-                        System.out.printf("| %-3d | %-10s | %-12s %-12s | %-4d |\n", i + 1, vehicle.getPlateNo(), vehicle.getBrand(),
+                        System.out.printf("| %-3d | %-10s | %-12s %-18s | %-4d |\n", i + 1, vehicle.getPlateNo(), vehicle.getBrand(),
                              vehicle.getModel(), vehicle.getRentalCount());
                     }
-                    System.out.println("-".repeat(55));
+                    System.out.println("-".repeat(61));
 
                     notify("");
                     break;

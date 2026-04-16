@@ -152,7 +152,7 @@ public abstract class Vehicle {
     }
     
     public String toString() {
-        return String.format("%-10s | %-12s %-12s | %-12s | %2d Seats | RM%8.2f", getPlateNo(), getBrand(),
+        return String.format("%-10s | %-12s %-18s | %-12s | %2d Seats | RM%9.2f", getPlateNo(), getBrand(),
              getModel(), getTransmission(), getSeatingCap(), getDailyRate());
     }
 

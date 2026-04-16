@@ -1,3 +1,8 @@
-Admin,A0001,admin1,adminpass
-Staff,S0002,staff1,staffpass
-Customer,C0003,cust1,custpass,020112120339,021-232-8321
+Admin,A0001,Jeremiah,adminpass
+Staff,S0002,Dan,staffpass
+Customer,C0003,Loh,custpass,null,null
+Admin,A0004,Adam,quan122
+Admin,A0005,Au,loh224
+Staff,S0006,Eddie,kong326
+Customer,C0007,Tan,tan236,null,null
+

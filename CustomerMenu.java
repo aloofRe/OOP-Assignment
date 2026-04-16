@@ -82,17 +82,17 @@ public class CustomerMenu extends Menu {
             ArrayList<Vehicle> availableVehicles = mainManager.getBookingManager().getAvailableVehicles(pickupDate, dropoffDate, vehicleType);
             
             System.out.println("========== Available Vehicles ==========");
-            System.out.println("-".repeat(88));
-            System.out.printf("| %-3s | %-10s | %-12s %-12s | %-12s | %8s | %-11s |\n",
+            System.out.println("-".repeat(94));
+            System.out.printf("| %-3s | %-10s | %-12s %-18s | %-12s | %8s | %-11s |\n",
                  "No", "PlateNo", "Brand", "Model", "Transmission", "Seats", "Daily Rate");
-            System.out.println("-".repeat(88));
+            System.out.println("-".repeat(94));
             
             for(int i = 0; i < availableVehicles.size(); i++) {
                 System.out.printf("| %-3d | ", (i + 1));
                 System.out.print(availableVehicles.get(i).toString() + " |\n");
             }
             
-            System.out.println("-".repeat(88));
+            System.out.println("-".repeat(94));
 
             System.out.println("\nWould you like to book a Vehicle?");
             System.out.println("\n1. Select Vehicle");
@@ -104,7 +104,7 @@ public class CustomerMenu extends Menu {
 
             switch(choice) {
                 case 1:
-                    System.out.print("\nSelect vehicle number : ");
+                    System.out.print("\nSelect Vehicle number : ");
                     int pickedVehicle = scanner.nextInt();
                     scanner.nextLine();
 
@@ -154,7 +154,7 @@ public class CustomerMenu extends Menu {
         switch(bookingChoice) {
             case 1:
                 if(mainManager.getSessionUser() instanceof Customer customer) {
-                    if(customer.getLicenseNo() == null || customer.getContactNo() == null) {
+                    if(customer.getLicenseNo().equals("null") || customer.getContactNo().equals("null")) {
                         System.out.println("Enter License No : ");
                         String licenseNo = scanner.nextLine();
                         customer.setLicenseNo(licenseNo);
@@ -210,7 +210,7 @@ public class CustomerMenu extends Menu {
 
             switch(choice) {
                 case 1:
-                    System.out.print("\nSelect Booking :  ");
+                    System.out.print("\nSelect Booking number : ");
                     int bookingChoice = scanner.nextInt();
                     scanner.nextLine();
 
@@ -259,7 +259,7 @@ public class CustomerMenu extends Menu {
 
             switch(choice) {
                 case 1:
-                    System.out.print("\nSelect Booking : ");
+                    System.out.print("\nSelect Booking number : ");
                     int bookingChoice = scanner.nextInt();
                     scanner.nextLine();
 
@@ -303,7 +303,7 @@ public class CustomerMenu extends Menu {
 
             switch(choice) {
                 case 1:
-                    System.out.print("\nSelect Invoice : ");
+                    System.out.print("\nSelect Invoice number : ");
                     int invoiceChoice = scanner.nextInt();
                     scanner.nextLine();
 
@@ -311,6 +311,7 @@ public class CustomerMenu extends Menu {
                         clearScreen();
                         Invoice selectedInvoice = invoices.get(invoiceChoice - 1);
 
+                        System.out.println("========== Invoice Details ==========");
                         System.out.println("-".repeat(43));
                         System.out.println("|                 INVOICE                 |");
                         System.out.println("-".repeat(43));
