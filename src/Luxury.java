@@ -1,3 +1,4 @@
+package src;
 public class Luxury extends Vehicle {
     private double serviceFee;
     private double insuranceRate;

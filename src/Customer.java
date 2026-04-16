@@ -1,3 +1,4 @@
+package src;
 public class Customer extends User {
     private String licenseNo;
     private String contactNo;

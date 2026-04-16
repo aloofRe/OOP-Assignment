@@ -1,3 +1,4 @@
+package src;
 public abstract class Vehicle {
     private String plateNo;
     private String brand;

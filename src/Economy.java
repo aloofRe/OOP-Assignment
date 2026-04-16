@@ -1,3 +1,4 @@
+package src;
 public class Economy extends Vehicle {
     private double fuelDiscount;
 
