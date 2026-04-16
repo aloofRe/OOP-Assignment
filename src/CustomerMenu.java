@@ -136,22 +136,22 @@ public class CustomerMenu extends Menu {
         System.out.printf("| %-16s | %-20s |\n", "Transmission", vehicle.getTransmission());
         System.out.printf("| %-16s | %-20d |\n", "Engine Capacity", vehicle.getEngineCap());
         System.out.printf("| %-16s | %-20d |\n", "Seating Capacity", vehicle.getSeatingCap());
-        System.out.printf("| %-16s | %-20f |\n", "Mileage", vehicle.getMileage());
-        System.out.printf("| %-16s | %-20f |\n", "Current Fuel", vehicle.getCurFuelLevel());
-        System.out.printf("| %-16s | %-20f |\n", "Max Fuel", vehicle.getMaxFuelLevel());
-        System.out.printf("| %-16s | %-20f |\n", "Daily Rate", vehicle.getDailyRate());
+        System.out.printf("| %-16s | %-20.2f |\n", "Mileage", vehicle.getMileage());
+        System.out.printf("| %-16s | %-20.2f |\n", "Current Fuel", vehicle.getCurFuelLevel());
+        System.out.printf("| %-16s | %-20.2f |\n", "Max Fuel", vehicle.getMaxFuelLevel());
+        System.out.printf("| %-16s | %-20.2f |\n", "Daily Rate", vehicle.getDailyRate());
 
         if(vehicle instanceof Economy economy) {
-            System.out.printf("| %-16s | %-20f |\n", "Fuel Discount", economy.getFuelDiscount());
+            System.out.printf("| %-16s | %-20.2f |\n", "Fuel Discount", economy.getFuelDiscount());
         }
         else if(vehicle instanceof Suv suv) {
-            System.out.printf("| %-16s | %-20f |\n", "Service Fee", suv.getServiceFee());
+            System.out.printf("| %-16s | %-20.2f |\n", "Service Fee", suv.getServiceFee());
         }
         else if(vehicle instanceof Luxury luxury) {
-            System.out.printf("| %-16s | %-20f |\n", "Service Fee", luxury.getServiceFee());
-            System.out.printf("| %-16s | %-20f |\n", "Insurance Rate", luxury.getInsuranceRate());
+            System.out.printf("| %-16s | %-20.2f |\n", "Service Fee", luxury.getServiceFee());
+            System.out.printf("| %-16s | %-20.2f |\n", "Insurance Rate", luxury.getInsuranceRate());
         }
-        
+
         System.out.printf("| %-16s | %-20d |\n", "Rental Count", vehicle.getRentalCount());
         System.out.println("-".repeat(43));
         
