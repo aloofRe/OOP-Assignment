@@ -35,7 +35,7 @@ public class BookingManager {
         ArrayList<Vehicle> availableVehicles = new ArrayList<>();
 
         for(Vehicle vehicle : mainManager.getRentalData().getAllVehicles()) {
-            if(vehicleType == 0 || (vehicleType == 1 && vehicle instanceof Economy)
+            if((vehicleType == 0 || vehicleType > 3) || (vehicleType == 1 && vehicle instanceof Economy)
                  || (vehicleType == 2 && vehicle instanceof Suv)
                  || (vehicleType == 3 && vehicle instanceof Luxury)) {
                 if(vehicle.getIsAvailable()) {

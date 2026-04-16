@@ -134,13 +134,25 @@ public class CustomerMenu extends Menu {
         System.out.printf("| %-16s | %-20s |\n", "Brand", vehicle.getBrand());
         System.out.printf("| %-16s | %-20s |\n", "Model", vehicle.getModel());
         System.out.printf("| %-16s | %-20s |\n", "Transmission", vehicle.getTransmission());
-        System.out.printf("| %-16s | %-20s |\n", "Engine Capacity", vehicle.getEngineCap());
-        System.out.printf("| %-16s | %-20s |\n", "Seating Capacity", vehicle.getSeatingCap());
-        System.out.printf("| %-16s | %-20s |\n", "Mileage", vehicle.getMileage());
-        System.out.printf("| %-16s | %-20s |\n", "Current Fuel", vehicle.getCurFuelLevel());
-        System.out.printf("| %-16s | %-20s |\n", "Max Fuel", vehicle.getMaxFuelLevel());
-        System.out.printf("| %-16s | %-20s |\n", "Daily Rate", vehicle.getDailyRate());
-        System.out.printf("| %-16s | %-20s |\n", "Rental Count", vehicle.getRentalCount());
+        System.out.printf("| %-16s | %-20d |\n", "Engine Capacity", vehicle.getEngineCap());
+        System.out.printf("| %-16s | %-20d |\n", "Seating Capacity", vehicle.getSeatingCap());
+        System.out.printf("| %-16s | %-20f |\n", "Mileage", vehicle.getMileage());
+        System.out.printf("| %-16s | %-20f |\n", "Current Fuel", vehicle.getCurFuelLevel());
+        System.out.printf("| %-16s | %-20f |\n", "Max Fuel", vehicle.getMaxFuelLevel());
+        System.out.printf("| %-16s | %-20f |\n", "Daily Rate", vehicle.getDailyRate());
+
+        if(vehicle instanceof Economy economy) {
+            System.out.printf("| %-16s | %-20f |\n", "Fuel Discount", economy.getFuelDiscount());
+        }
+        else if(vehicle instanceof Suv suv) {
+            System.out.printf("| %-16s | %-20f |\n", "Service Fee", suv.getServiceFee());
+        }
+        else if(vehicle instanceof Luxury luxury) {
+            System.out.printf("| %-16s | %-20f |\n", "Service Fee", luxury.getServiceFee());
+            System.out.printf("| %-16s | %-20f |\n", "Insurance Rate", luxury.getInsuranceRate());
+        }
+        
+        System.out.printf("| %-16s | %-20d |\n", "Rental Count", vehicle.getRentalCount());
         System.out.println("-".repeat(43));
         
         double baseTotal = mainManager.getBookingManager().calculateBaseTotal(vehicle, pickupDate, dropoffDate);
@@ -156,11 +168,11 @@ public class CustomerMenu extends Menu {
             case 1:
                 if(mainManager.getSessionUser() instanceof Customer customer) {
                     if(customer.getLicenseNo().equals("null") || customer.getContactNo().equals("null")) {
-                        System.out.println("Enter License No : ");
+                        System.out.print("Enter License No : ");
                         String licenseNo = scanner.nextLine();
                         customer.setLicenseNo(licenseNo);
 
-                        System.out.println("Enter Contact No : ");
+                        System.out.print("Enter Contact No : ");
                         String contactNo = scanner.nextLine();
                         customer.setContactNo(contactNo);
                     }

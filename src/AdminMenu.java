@@ -1,6 +1,7 @@
 package src;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.lang.Math;
 
 
 public class AdminMenu extends Menu {
@@ -112,17 +113,18 @@ public class AdminMenu extends Menu {
 
             switch(editChoice) {
                 case 1:
-                    double mileage = getDoubleInput("\nEnter new mileage : ");
+                    double mileage = Math.max(0.0, getDoubleInput("\nEnter new mileage : "));
 
                     vehicle.setMileage(mileage);
                     break;
                 case 2:
-                    double curFuelLevel = getDoubleInput("Enter new current fuel level (Max : " + vehicle.getMaxFuelLevel() + ") : ");
+                    double curFuelLevel = Math.clamp(getDoubleInput("Enter new current fuel level (Max : " + vehicle.getMaxFuelLevel() + ") : "),
+                         0.0, vehicle.getMaxFuelLevel());
 
                     vehicle.setCurFuelLevel(curFuelLevel);
                     break;
                 case 3:
-                    double dailyRate = getDoubleInput("Enter new daily rate (RM) : ");
+                    double dailyRate = Math.max(0.0, getDoubleInput("Enter new daily rate (RM) : "));
 
                     vehicle.setDailyRate(dailyRate);
                     break;
@@ -175,21 +177,21 @@ public class AdminMenu extends Menu {
         System.out.print("Enter Transmission : ");
         String transmission = scanner.nextLine();
 
-        int engineCap = getIntInput("Enter Engine Capacity : ");
+        int engineCap = Math.max(0, getIntInput("Enter Engine Capacity : "));
 
-        int seatingCap = getIntInput("Enter Seating Capacity : ");
+        int seatingCap = Math.max(0, getIntInput("Enter Seating Capacity : "));
 
-        double mileage = getDoubleInput("Enter Mileage : ");
+        double mileage = Math.max(0.0, getDoubleInput("Enter Mileage : "));
 
-        double curFuelLevel = getDoubleInput("Enter Current Fuel Level : ");
+        double maxFuelLevel = Math.max(0.0, getDoubleInput("Enter Max Fuel Level : "));
 
-        double maxFuelLevel = getDoubleInput("Enter Max Fuel Level : ");
+        double curFuelLevel = Math.clamp(getDoubleInput("Enter Current Fuel Level : "), 0.0, maxFuelLevel);
 
-        double dailyRate = getDoubleInput("Enter Daily Rate (RM) : ");
+        double dailyRate = Math.max(0.0, getDoubleInput("Enter Daily Rate (RM) : "));
 
         switch(typeChoice) {
             case 1:
-                double fuelDiscount = getDoubleInput("Enter Fuel Discount (e.g. 0.1 for 10%) : ");
+                double fuelDiscount = Math.clamp(getDoubleInput("Enter Fuel Discount (e.g. 0.1 for 10%) : "), 0.0, 1.0);
 
                 System.out.println("\nConfirm Add Vehicle?");
 				System.out.println("1. Yes");
@@ -207,7 +209,7 @@ public class AdminMenu extends Menu {
                 }
                 break;
             case 2:
-                double serviceFee = getDoubleInput("Enter Service Fee (RM) : ");
+                double serviceFee = Math.max(0.0, getDoubleInput("Enter Service Fee (RM) : "));
 
                 System.out.println("\nConfirm Add Vehicle?");
                 System.out.println("1. Yes");
@@ -225,9 +227,9 @@ public class AdminMenu extends Menu {
                 }
                 break;
             case 3:
-                double luxuryServiceFee = getDoubleInput("Enter Service Fee (RM) : ");
+                double luxuryServiceFee = Math.max(0.0, getDoubleInput("Enter Service Fee (RM) : "));
 
-                double insuranceRate = getDoubleInput("Enter Insurance Rate (per day) : ");
+                double insuranceRate = Math.max(0.0, getDoubleInput("Enter Insurance Rate (RM/per day) : "));
 
                 System.out.println("\nConfirm Add Vehicle?");
                 System.out.println("1. Yes");

@@ -1,6 +1,7 @@
 package src;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.lang.Math;
 
 
 public class StaffMenu extends Menu {
@@ -64,10 +65,11 @@ public class StaffMenu extends Menu {
                         clearScreen();
                         Booking selectedBooking = returnedBookings.get(bookingChoice - 1);
 
-                        double curFuelLevel = getDoubleInput("\nEnter the current fuel level (Max : " + selectedBooking.getVehicle().getMaxFuelLevel() + ") : ");
+                        double curFuelLevel = Math.clamp(getDoubleInput("\nEnter the current fuel level (Max : " + selectedBooking.getVehicle().getMaxFuelLevel() + ") : "),
+                             0.0, selectedBooking.getVehicle().getMaxFuelLevel());
                         mainManager.getVehicleManager().setVehicleFuel(selectedBooking.getVehicle().getPlateNo(), curFuelLevel);
                         
-                        double addMileage = getDoubleInput("Enter new mileage to be added : ");
+                        double addMileage = Math.max(0.0, getDoubleInput("Enter new mileage to be added : "));
                         mainManager.getVehicleManager().setVehicleMileage(selectedBooking.getVehicle().getPlateNo(),
                              selectedBooking.getVehicle().getMileage() + addMileage);
 
@@ -78,7 +80,7 @@ public class StaffMenu extends Menu {
 
                         switch(damageChoice) {
                             case 1:
-                                double damageFee = getDoubleInput("\nEnter the damage fee : ");
+                                double damageFee = Math.max(0.0, getDoubleInput("\nEnter the damage fee : "));
 
                                 mainManager.getVehicleManager().setVehicleDamage(selectedBooking, true, damageFee);
                                 break;
