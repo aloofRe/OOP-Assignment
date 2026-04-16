@@ -48,6 +48,7 @@ public abstract class Menu {
                 scanner.nextLine();
                 return input;
             } catch (InputMismatchException e) {
+                scanner.nextLine();
                 notify("Invalid Input. Please try again.");
             }
         }
@@ -61,6 +62,7 @@ public abstract class Menu {
                 scanner.nextLine();
                 return input;
             } catch (InputMismatchException e) {
+                scanner.nextLine();
                 notify("Invalid Input. Please try again.");
             }
         }
