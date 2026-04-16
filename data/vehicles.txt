@@ -2,9 +2,9 @@ Economy,QAD9922,Perodua,Perodua Axia,Automatic,1000,5,108040,30,33,75,true,false
 Economy,SB8945D,Perodua,Perodua Bezza,Manual,1000,5,98040,30,36,70,true,false,5,0.05
 Economy,ST6288D,Perodua,Perodua Bezza,Automatic,1300,5,54000,29,36,90,true,false,3,0.10
 Economy,QAD9988,Proton,Proton Saga,Automatic,1300,5,8900,35,40,90,true,false,1,0.10
-Econamy,SAB1769,Toyota,Toyota Vios,Automatic,1500,5,67089,30,42,120,true,false,6,0.15
-Econamy,JQN7896,Honda,Honda City,Automatic,1500,5,4500,40,47,120,true,false,1,0.15
-Econamy,SAB8783C,Perodua,Perodua Myvi,Automatic,1500,5,8700,30,36,95,true,false,2,0.10
+Economy,SAB1769,Toyota,Toyota Vios,Automatic,1500,5,67089,30,42,120,true,false,6,0.15
+Economy,JQN7896,Honda,Honda City,Automatic,1500,5,4500,40,47,120,true,false,1,0.15
+Economy,SAB8783C,Perodua,Perodua Myvi,Automatic,1500,5,8700,30,36,95,true,false,2,0.10
 Suv,SAB4446,Toyota,Toyota Avanza,Automatic,1500,8,150045,35,45,125,true,false,8,10
 Suv,SAB6676,Toyota,Toyota Innova,Automatic,2000,8,67900,35,52,150,true,false,7,15
 Suv,QAD9986,Honda,Honda HRV,Automatic,1500,5,7800,20,40,140,true,false,2,13
