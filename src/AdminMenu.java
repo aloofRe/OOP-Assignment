@@ -20,10 +20,7 @@ public class AdminMenu extends Menu {
             System.out.println("\n1. Fleet Management");
             System.out.println("2. Reports");
             System.out.println("3. Logout");
-            System.out.print("\nEnter choice : ");
-		
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = getIntInput("\nEnter choice : ");
 
             switch(choice) {
                 case 1:
@@ -67,16 +64,11 @@ public class AdminMenu extends Menu {
 			System.out.println("2. Add Vehicle");
 			System.out.println("3. Remove Vehicle");
 			System.out.println("4. Return");
-			System.out.print("\nEnter choice : ");
-            
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+			int choice = getIntInput("\nEnter choice : ");
 
             switch(choice) {
                 case 1:
-					System.out.print("Enter vehicle number : ");
-                    int pickedVehicle = scanner.nextInt();
-                    scanner.nextLine();
+                    int pickedVehicle = getIntInput("\nEnter Vehicle number : ");
 
                     if(pickedVehicle >= 1 && pickedVehicle <= allVehicles.size()) {
                         managementMenu(allVehicles.get(pickedVehicle - 1));
@@ -88,9 +80,7 @@ public class AdminMenu extends Menu {
                     createVehicle();
                     break;
                 case 3:
-					System.out.print("Enter vehicle number : ");
-                    int removeVehicle = scanner.nextInt();
-                    scanner.nextLine();
+					int removeVehicle = getIntInput("\nEnter Vehicle number : ");
 
                     if(removeVehicle >= 1 && removeVehicle <= allVehicles.size()) {
                         mainManager.getVehicleManager().removeVehicle(allVehicles.get(removeVehicle - 1).getPlateNo());
@@ -118,60 +108,40 @@ public class AdminMenu extends Menu {
             System.out.println("5. Damage Status");
             System.out.println("6. Rental Count");
             System.out.println("7. Return");
-            System.out.print("\nEnter choice : ");
-				
-            int editChoice = scanner.nextInt();
-            scanner.nextLine();
+            int editChoice = getIntInput("\nEnter choice : ");
 
             switch(editChoice) {
                 case 1:
-					System.out.print("Enter new mileage : ");
-					
-                    double mileage = scanner.nextDouble();
-                    scanner.nextLine();
+                    double mileage = getDoubleInput("\nEnter new mileage : ");
 
                     vehicle.setMileage(mileage);
                     break;
                 case 2:
-					System.out.print("Enter new current fuel level (Max : " + vehicle.getMaxFuelLevel() + ") : ");
-
-                    double curFuelLevel = scanner.nextDouble();
-                    scanner.nextLine();
+                    double curFuelLevel = getDoubleInput("Enter new current fuel level (Max : " + vehicle.getMaxFuelLevel() + ") : ");
 
                     vehicle.setCurFuelLevel(curFuelLevel);
                     break;
                 case 3:
-					System.out.print("Enter new daily rate : ");
-
-                    double dailyRate = scanner.nextDouble();
-                    scanner.nextLine();
+                    double dailyRate = getDoubleInput("Enter new daily rate (RM) : ");
 
                     vehicle.setDailyRate(dailyRate);
                     break;
                 case 4:
                     System.out.println("Enter new availability");
 					System.out.println("1 = Available\n2 = Not Available");
-                    System.out.print("\nEnter choice : ");
-
-                    int isAvailable = scanner.nextInt();
-                    scanner.nextLine();
+                    int isAvailable = getIntInput("Enter choice : ");
 
                     vehicle.setIsAvailable(isAvailable == 1);
                     break;
                 case 5:
                     System.out.println("Enter new damage status");
 					System.out.println("1 = Damaged\n2 = Not Damaged");
-                    System.out.print("\nEnter choice : ");
-
-                    int isDamaged = scanner.nextInt();
-                    scanner.nextLine();
+                    int isDamaged = getIntInput("Enter choice : ");
 
                     vehicle.setIsDamaged(isDamaged == 1);
                     break;
                 case 6:
-					System.out.print("Enter new rental count : ");
-                    int rentalCount = scanner.nextInt();
-                    scanner.nextLine();
+                    int rentalCount = getIntInput("Enter new rental count : ");
 
                     vehicle.setRentalCount(rentalCount);
                     break;
@@ -191,10 +161,7 @@ public class AdminMenu extends Menu {
         System.out.println("1. Economy");
         System.out.println("2. SUV");
         System.out.println("3. Luxury");
-        System.out.print("\nEnter choice : ");
-			
-        int typeChoice = scanner.nextInt();
-        scanner.nextLine();
+        int typeChoice = getIntInput("\nEnter choice : ");
 
         System.out.print("\nEnter Plate Number : ");
         String plateNo = scanner.nextLine();
@@ -208,42 +175,26 @@ public class AdminMenu extends Menu {
         System.out.print("Enter Transmission : ");
         String transmission = scanner.nextLine();
 
-        System.out.print("Enter Engine Capacity : ");
-        int engineCap = scanner.nextInt();
-        scanner.nextLine();
+        int engineCap = getIntInput("Enter Engine Capacity : ");
 
-        System.out.print("Enter Seating Capacity : ");
-        int seatingCap = scanner.nextInt();
-        scanner.nextLine();
+        int seatingCap = getIntInput("Enter Seating Capacity : ");
 
-        System.out.print("Enter Mileage : ");
-        double mileage = scanner.nextDouble();
-        scanner.nextLine();
+        double mileage = getDoubleInput("Enter Mileage : ");
 
-        System.out.print("Enter Current Fuel Level : ");
-        double curFuelLevel = scanner.nextDouble();
-        scanner.nextLine();
+        double curFuelLevel = getDoubleInput("Enter Current Fuel Level : ");
 
-        System.out.print("Enter Max Fuel Level : ");
-        double maxFuelLevel = scanner.nextDouble();
-        scanner.nextLine();
+        double maxFuelLevel = getDoubleInput("Enter Max Fuel Level : ");
 
-        System.out.print("Enter Daily Rate (RM) : ");
-        double dailyRate = scanner.nextDouble();
-        scanner.nextLine();
+        double dailyRate = getDoubleInput("Enter Daily Rate (RM) : ");
 
         switch(typeChoice) {
             case 1:
-                System.out.print("Enter Fuel Discount (e.g. 0.1 for 10%) : ");
-                double fuelDiscount = scanner.nextDouble();
-                scanner.nextLine();
+                double fuelDiscount = getDoubleInput("Enter Fuel Discount (e.g. 0.1 for 10%) : ");
 
                 System.out.println("\nConfirm Add Vehicle?");
 				System.out.println("1. Yes");
 				System.out.println("2. No");
-			    System.out.print("\nEnter choice : ");
-                int economyChoice = scanner.nextInt();
-                scanner.nextLine();
+                int economyChoice = getIntInput("\nEnter choice : ");
 
                 switch(economyChoice) {
                     case 1:
@@ -256,17 +207,12 @@ public class AdminMenu extends Menu {
                 }
                 break;
             case 2:
-                System.out.print("Enter Service Fee (RM) : ");
-                
-                double serviceFee = scanner.nextDouble();
-                scanner.nextLine();
+                double serviceFee = getDoubleInput("Enter Service Fee (RM) : ");
 
                 System.out.println("\nConfirm Add Vehicle?");
                 System.out.println("1. Yes");
 				System.out.println("2. No");
-				System.out.print("\nEnter choice : ");
-                int suvChoice = scanner.nextInt();
-                scanner.nextLine();
+                int suvChoice = getIntInput("\nEnter choice : ");
 
                 switch(suvChoice) {
                     case 1:
@@ -279,23 +225,14 @@ public class AdminMenu extends Menu {
                 }
                 break;
             case 3:
-                System.out.print("Enter Service Fee (RM) : ");
-                
-                double luxuryServiceFee = scanner.nextDouble();
-                scanner.nextLine();
+                double luxuryServiceFee = getDoubleInput("Enter Service Fee (RM) : ");
 
-                System.out.print("Enter Insurance Rate (per day) : ");
-                
-                double insuranceRate = scanner.nextDouble();
-                scanner.nextLine();
+                double insuranceRate = getDoubleInput("Enter Insurance Rate (per day) : ");
 
                 System.out.println("\nConfirm Add Vehicle?");
                 System.out.println("1. Yes");
 				System.out.println("2. No");
-				System.out.print("\nEnter choice : ");
-				
-                int luxuryChoice = scanner.nextInt();
-                scanner.nextLine();
+                int luxuryChoice = getIntInput("\nEnter choice : ");
 
                 switch(luxuryChoice) {
                     case 1:
@@ -320,10 +257,7 @@ public class AdminMenu extends Menu {
 			System.out.println("1. Most Rented Cars Report");
 			System.out.println("2. Total Revenue Report");
 			System.out.println("3. Return");
-			System.out.print("\nEnter choice : ");
-			
-            int reportChoice = scanner.nextInt();
-            scanner.nextLine();
+            int reportChoice = getIntInput("\nEnter choice : ");
 
             switch(reportChoice) {
                 case 1:

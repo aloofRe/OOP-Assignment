@@ -19,7 +19,7 @@ public class LoginManager {
     }
 
     public boolean registerNewUser(User user) {
-        if(user.getPassword() == null || user.getPassword().trim().isEmpty() || user.getName().length() > 50 || user.getPassword().length() > 20) {
+        if(user.getPassword() == null || user.getPassword().trim().isEmpty() || user.getName().trim().isEmpty() || user.getName().length() > 50 || user.getPassword().length() > 20) {
             return false;
         } else {
             mainManager.getRentalData().addUser(user);

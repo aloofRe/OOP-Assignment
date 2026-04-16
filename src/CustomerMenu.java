@@ -24,10 +24,8 @@ public class CustomerMenu extends Menu {
             System.out.println("3. Dropoff Vehicles");
             System.out.println("4. View Payments");
             System.out.println("5. Logout");
-            
-            System.out.print("\nEnter choice : ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+
+            int choice = getIntInput("\nEnter choice : ");
 
             switch(choice) {
                 case 1:
@@ -65,6 +63,11 @@ public class CustomerMenu extends Menu {
             return;
         }
 
+        if(pickupDate == null || pickupDate.isBefore(mainManager.getRentalData().getSystemDate())) {
+            notify("Invalid Date. Please Enter A Valid Date");
+            return;
+        }
+
         System.out.print("Enter Dropoff Date (YYYY-MM-DD) : ");
         LocalDate dropoffDate;
         try{
@@ -74,9 +77,12 @@ public class CustomerMenu extends Menu {
             return;
         }
 
-        System.out.print("Enter Vehicle Type filter (0 = All, 1 = Economy, 2 = Suv, 3 = Luxury) : ");
-        int vehicleType = scanner.nextInt();
-        scanner.nextLine();
+        if(dropoffDate == null || dropoffDate.isBefore(pickupDate) || pickupDate.equals(dropoffDate)) {
+            notify("Invalid Dates. Please Enter Valid Dates.");
+            return;
+        }
+
+        int vehicleType = getIntInput("Enter Vehicle Type filter (0 = All, 1 = Economy, 2 = Suv, 3 = Luxury) : ");
 
         while(true) {
             clearScreen();
@@ -99,15 +105,11 @@ public class CustomerMenu extends Menu {
             System.out.println("\n1. Select Vehicle");
             System.out.println("2. Return");
 
-            System.out.print("\nEnter choice : ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = getIntInput("\nEnter choice : ");
 
             switch(choice) {
                 case 1:
-                    System.out.print("\nSelect Vehicle number : ");
-                    int pickedVehicle = scanner.nextInt();
-                    scanner.nextLine();
+                    int pickedVehicle = getIntInput("\nEnter Vehicle number : ");
 
                     if(pickedVehicle >= 1 && pickedVehicle <= availableVehicles.size()) {
                         reservationMenu(availableVehicles.get(pickedVehicle - 1), pickupDate, dropoffDate);
@@ -148,9 +150,7 @@ public class CustomerMenu extends Menu {
         System.out.println("\n1. Confirm Booking");
         System.out.println("2. Return");
         
-        System.out.print("\nEnter choice : ");
-        int bookingChoice = scanner.nextInt();
-        scanner.nextLine();
+        int bookingChoice = getIntInput("\nEnter choice : ");
 
         switch(bookingChoice) {
             case 1:
@@ -205,15 +205,11 @@ public class CustomerMenu extends Menu {
             System.out.println("\n1. Pickup a Vehicle");
             System.out.println("2. Return");
 
-            System.out.print("\nEnter choice : ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = getIntInput("\nEnter choice : ");
 
             switch(choice) {
                 case 1:
-                    System.out.print("\nSelect Booking number : ");
-                    int bookingChoice = scanner.nextInt();
-                    scanner.nextLine();
+                    int bookingChoice = getIntInput("\nEnter Booking number : ");
 
                     LocalDate currentDate = mainManager.getRentalData().getSystemDate();
 
@@ -254,15 +250,11 @@ public class CustomerMenu extends Menu {
             System.out.println("\n1. Dropoff Vehicle");
             System.out.println("2. Return");
 
-            System.out.print("\nEnter choice : ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = getIntInput("\nEnter choice : ");
 
             switch(choice) {
                 case 1:
-                    System.out.print("\nSelect Booking number : ");
-                    int bookingChoice = scanner.nextInt();
-                    scanner.nextLine();
+                    int bookingChoice = getIntInput("\nEnter Booking number : ");
 
                     if(bookingChoice >= 1 && bookingChoice <= dropoffBookings.size()) {
                         mainManager.getBookingManager().setDroppedoff(dropoffBookings.get(bookingChoice - 1), true);
@@ -298,15 +290,12 @@ public class CustomerMenu extends Menu {
 
             System.out.println("\n1. View Details");
             System.out.println("2. Return");
-            System.out.print("\nEnter choice : ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+
+            int choice = getIntInput("\nEnter choice : ");
 
             switch(choice) {
                 case 1:
-                    System.out.print("\nSelect Invoice number : ");
-                    int invoiceChoice = scanner.nextInt();
-                    scanner.nextLine();
+                    int invoiceChoice = getIntInput("\nEnter Invoice number : ");
 
                     if(invoiceChoice >= 1 && invoiceChoice <= invoices.size()) {
                         clearScreen();

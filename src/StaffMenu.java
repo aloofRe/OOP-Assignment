@@ -18,10 +18,7 @@ public class StaffMenu extends Menu {
             System.out.println("'------------------------------'");
             System.out.println("\n1. Returned Bookings");
             System.out.println("2. Logout");
-            System.out.print("\nEnter choice : ");
-
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = getIntInput("\nEnter choice : ");
 
             switch(choice) {
                 case 1:
@@ -57,43 +54,31 @@ public class StaffMenu extends Menu {
             System.out.println("\nWould you like to complete a Booking?");
             System.out.println("1. Yes");
             System.out.println("2. No");
-            System.out.print("\nEnter choice : ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = getIntInput("\nEnter choice : ");
 
             switch(choice) {
                 case 1:
-                    System.out.print("\nEnter Booking number : ");
-                    int bookingChoice = scanner.nextInt();
-                    scanner.nextLine();
+                    int bookingChoice = getIntInput("\nEnter Booking number : ");
 
                     if(bookingChoice >= 1 && bookingChoice <= returnedBookings.size()) {
                         clearScreen();
                         Booking selectedBooking = returnedBookings.get(bookingChoice - 1);
 
-                        System.out.print("\nEnter the current fuel level (Max : " + selectedBooking.getVehicle().getMaxFuelLevel() + ") : ");
-                        double curFuelLevel = scanner.nextDouble();
-                        scanner.nextLine();
+                        double curFuelLevel = getDoubleInput("\nEnter the current fuel level (Max : " + selectedBooking.getVehicle().getMaxFuelLevel() + ") : ");
                         mainManager.getVehicleManager().setVehicleFuel(selectedBooking.getVehicle().getPlateNo(), curFuelLevel);
                         
-                        System.out.print("Enter new mileage to be added : ");
-                        double addMileage = scanner.nextDouble();
-                        scanner.nextLine();
+                        double addMileage = getDoubleInput("Enter new mileage to be added : ");
                         mainManager.getVehicleManager().setVehicleMileage(selectedBooking.getVehicle().getPlateNo(),
                              selectedBooking.getVehicle().getMileage() + addMileage);
 
                         System.out.println("Is the vehicle damaged?");
                         System.out.println("1. Yes");
                         System.out.println("2. No");
-                        System.out.print("\nEnter choice : ");
-                        int damageChoice = scanner.nextInt();
-                        scanner.nextLine();
+                        int damageChoice = getIntInput("\nEnter choice : ");
 
                         switch(damageChoice) {
                             case 1:
-                                System.out.print("\nEnter the damage fee : ");
-                                double damageFee = scanner.nextDouble();
-                                scanner.nextLine();
+                                double damageFee = getDoubleInput("\nEnter the damage fee : ");
 
                                 mainManager.getVehicleManager().setVehicleDamage(selectedBooking, true, damageFee);
                                 break;

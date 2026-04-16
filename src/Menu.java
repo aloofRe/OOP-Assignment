@@ -1,5 +1,6 @@
 package src;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 
 public abstract class Menu {
@@ -14,12 +15,12 @@ public abstract class Menu {
 
     public abstract void start();
 
-    public void notify(String message) {
+    protected void notify(String message) {
         System.out.println(message + "\nPress Enter To Continue...");
         scanner.nextLine();
     }
 
-    public void clearScreen() {
+    protected void clearScreen() {
         try {
             String os = System.getProperty("os.name");
 
@@ -35,6 +36,32 @@ public abstract class Menu {
             //Fallback to pushing screen
             for (int i = 0; i < 50; i++) {
                 System.out.println();
+            }
+        }
+    }
+
+    protected int getIntInput(String prompt) {
+        while(true) {
+            System.out.print(prompt);
+            try {
+                int input = scanner.nextInt();
+                scanner.nextLine();
+                return input;
+            } catch (InputMismatchException e) {
+                notify("Invalid Input. Please try again.");
+            }
+        }
+    }
+
+    protected double getDoubleInput(String prompt) {
+        while(true) {
+            System.out.print(prompt);
+            try {
+                int input = scanner.nextInt();
+                scanner.nextLine();
+                return input;
+            } catch (InputMismatchException e) {
+                notify("Invalid Input. Please try again.");
             }
         }
     }

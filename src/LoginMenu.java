@@ -17,9 +17,7 @@ public class LoginMenu extends Menu {
         System.out.println("|          LOGIN MENU          |");
         System.out.println("'------------------------------'");
         System.out.println("\n1. Login\n2. Register\n3. Switch System Date\n4. Quit");
-        System.out.print("\nEnter choice : ");
-        int choice = scanner.nextInt();
-        scanner.nextLine();
+        int choice = getIntInput("\nEnter choice : ");
 
         switch(choice) {
             case 1:
@@ -63,9 +61,7 @@ public class LoginMenu extends Menu {
 
                 System.out.println("Would you like to retry?");
                 System.out.println("1. Yes\n2. No");
-                System.out.print("\nEnter choice : ");
-                int choice = scanner.nextInt();
-                scanner.nextLine();
+                int choice = getIntInput("\nEnter choice : ");
 
                 switch(choice) {
                     case 1:
@@ -113,9 +109,7 @@ public class LoginMenu extends Menu {
 
                 System.out.println("Would you like to retry?");
                 System.out.println("1. Yes\n2. No");
-                System.out.print("\nEnter choice : ");
-                int choice = scanner.nextInt();
-                scanner.nextLine();
+                int choice = getIntInput("\nEnter choice : ");
 
                 switch(choice) {
                     case 1:
@@ -143,10 +137,7 @@ public class LoginMenu extends Menu {
 
         System.out.println("\nWould you like to change the date?");
         System.out.println("1. Yes\n2. No");
-        System.out.print("\nEnter choice : ");
-
-        int choice = scanner.nextInt();
-        scanner.nextLine();
+        int choice = getIntInput("\nEnter choice : ");
 
         switch(choice) {
             case 1:
