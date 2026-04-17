@@ -6,8 +6,8 @@ public class Customer extends User {
 
     public Customer(String userId, String name, String password) {
         super(userId, name, password);
-        this.licenseNo = "";
-        this.contactNo = "";
+        this.licenseNo = "null";
+        this.contactNo = "null";
     }
 
     public Customer(String userId, String name, String password, String licenseNo, String contactNo) {
@@ -38,6 +38,6 @@ public class Customer extends User {
     @Override
     public String toCSV() {
         return ("Customer," + getUserId() + "," + getName() + "," + getPassword() + ","
-             + getLicenseNo() + "," + getContactNo());
+             + licenseNo + "," + contactNo);
     }
 }
