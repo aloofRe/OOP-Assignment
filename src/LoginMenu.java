@@ -1,6 +1,7 @@
 package src;
 import java.util.Scanner;
 import java.time.LocalDate;
+import java.lang.Math;
 
 
 public class LoginMenu extends Menu {
@@ -13,6 +14,11 @@ public class LoginMenu extends Menu {
     public void start() {
         clearScreen();
 
+        System.out.println("         ________                 .-------------------.");
+        System.out.println("    ____//__][__\\\\__       ,,..-=/ Car Rental System /");
+        System.out.println("   (o _  | -|   _  o|>--''`     '-------------------'");
+        System.out.println("    `(_)^-----^(_)''`");
+
         System.out.println(".------------------------------.");
         System.out.println("|          LOGIN MENU          |");
         System.out.println("'------------------------------'");
@@ -21,6 +27,7 @@ public class LoginMenu extends Menu {
 
         switch(choice) {
             case 1:
+                animateCar();
                 loginUser();
                 break;
             case 2:
@@ -162,6 +169,37 @@ public class LoginMenu extends Menu {
                 return;
             default:
                 return;
+        }
+    }
+
+    public void animateCar() {
+        int moveWidth = 60;
+        String[] carAscii = {
+            "         ________                 .-------------------.",
+            "    ____//__][__\\\\__       ,,..-=/ Car Rental System /",
+            "   (o _  | -|   _  o|>--''`     '-------------------'",
+            "    `(_)^-----^(_)''`"
+        };
+
+        for(int i = 0; i < moveWidth; i++) {
+            clearScreen();
+
+            for(String line : carAscii) {
+                String visibleLine = (i < line.length()) ? line.substring(i) : "";
+
+                System.out.println(visibleLine);
+            }
+
+            System.out.println(".------------------------------.");
+            System.out.println("|          LOGIN MENU          |");
+            System.out.println("'------------------------------'");
+            System.out.println("\n1. Login\n2. Register\n3. Switch System Date\n4. Quit");
+
+            try {
+                Thread.sleep(Math.max(14, 35 - (i * 125 / moveWidth)));
+            } catch(InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
     }
 }
