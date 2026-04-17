@@ -82,7 +82,10 @@ public class MainManager {
 
     public void shutdown() {
         systemRunning = false;
+        System.out.println("\nSaving Data...");
         dataManager.saveData();
+
+        System.out.println("Data Saved!");
 
         scanner.close();
 
