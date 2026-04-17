@@ -14,10 +14,10 @@ public class LoginMenu extends Menu {
     public void start() {
         clearScreen();
 
-        System.out.println("         ________                 .-------------------.");
-        System.out.println("    ____//__][__\\\\__       ,,..-=/ Car Rental System /");
-        System.out.println("   (o _  | -|   _  o|>--''`     '-------------------'");
-        System.out.println("    `(_)^-----^(_)''`");
+        System.out.println("\u001B[31m" + "         ________                 .-------------------.");
+        System.out.println("\u001B[31m" + "    ____//__][__\\\\__       ,,..-=/ Car Rental System /");
+        System.out.println("\u001B[31m" + "   (o _  | -|   _  o|>--''`     '-------------------'");
+        System.out.println("\u001B[31m" + "    `(_)^-----^(_)''`" + "\u001B[0m");
 
         System.out.println(".------------------------------.");
         System.out.println("|          LOGIN MENU          |");
@@ -187,7 +187,7 @@ public class LoginMenu extends Menu {
             for(String line : carAscii) {
                 String visibleLine = (i < line.length()) ? line.substring(i) : "";
 
-                System.out.println(visibleLine);
+                System.out.println("\u001B[31m" + visibleLine + "\u001B[0m");
             }
 
             System.out.println(".------------------------------.");
