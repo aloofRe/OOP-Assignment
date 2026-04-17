@@ -58,7 +58,7 @@ public abstract class Menu {
         while(true) {
             System.out.print(prompt);
             try {
-                int input = scanner.nextInt();
+                double input = scanner.nextDouble();
                 scanner.nextLine();
                 return input;
             } catch (InputMismatchException e) {
